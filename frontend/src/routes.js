@@ -48,6 +48,7 @@ import InfoIcon from "@mui/icons-material/Info";
 // Pages
 import AboutUs from "layouts/pages/landing-pages/about-us";
 import Inicio from "layouts/pages/landing-pages/inicio";
+import QuienesSomos from "layouts/pages/landing-pages/quienes-somos";
 // import ContactUs from "layouts/pages/landing-pages/contact-us";
 // import Author from "layouts/pages/landing-pages/author";
 // import SignIn from "layouts/pages/authentication/sign-in";
@@ -283,7 +284,7 @@ const routes = [
     name: "Quiene Somos",
     icon: <InfoIcon />,
     route: "/quienes-somos",
-    component: <AboutUs />,
+    component: <QuienesSomos />,
   },
   {
     name: "Que Nos Interesa",
