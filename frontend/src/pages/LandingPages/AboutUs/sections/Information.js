@@ -29,59 +29,64 @@ function Information() {
     <MKBox component="section" py={12}>
       <Container>
         <Grid container spacing={3} alignItems="center">
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={12}>
             <Grid container justifyContent="flex-start">
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={12}>
                 <MKBox mb={5}>
                   <DefaultInfoCard
-                    icon="public"
-                    title="Fully integrated"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon=""
+                    title="Misión"
+                    description="UnixValle es un grupo de estudiantes entusiastas del software libre.
+                     Nuestra misión principal es elevar las habilidades en experimentación, los conocimientos
+                    de sus integrantes y de la comunidad en general acerca de temas relacionados con los sistemas 
+                    Linux junto con las herramientas de este sistema."
                   />
                 </MKBox>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={12}>
                 <MKBox mb={5}>
                   <DefaultInfoCard
-                    icon="payments"
-                    title="Payments functionality"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon=""
+                    title="Visión"
+                    description="El grupo se visualiza en el 2024 cómo un referente dentro de la Universidad del Valle,
+                     la región y la comunidad en general, en temas asociados a Linux, siendo un lugar de apoyo frente a 
+                     conocimientos y habilidades que permitan dar un acercamiento a saberes relacionados con este sistema. 
+                     Lo anterior, por medio de plataformas virtuales que comuniquen a distintos grupos de estudio, 
+                     investigación o divulgación a través del préstamo de espacios para el aprendizaje."
                   />
                 </MKBox>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={12}>
                 <MKBox mb={{ xs: 5, md: 0 }}>
                   <DefaultInfoCard
-                    icon="apps"
-                    title="Prebuilt components"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon=""
+                    title="Lineas de trabajo"
+                    description="Se crearán hilos en discord para ello:
+                    Discord.
+                    Podcast: se escribe sobre qué temas se van a discutir en los próximos podcast del grupo.
+                    Blog: Se habla sobre el blog, donde se pueden lanzar sugerencias, inquietudes o peticiones para modificarlo.
+                    Distribuciones: se detallarán conversaciones sobre distros de Linux. Por ejemplo: preguntas y respuestas 
+                    sobre una distro en concreto como ubuntu o arch.
+                    Social: discusión sobre la parte mediática del grupo a través de las redes sociales.
+                    "
                   />
                 </MKBox>
               </Grid>
-              <Grid item xs={12} md={6}>
+
+              <Grid item xs={12} md={12}>
                 <MKBox mb={{ xs: 5, md: 0 }}>
                   <DefaultInfoCard
-                    icon="3p"
-                    title="Improved platform"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon=""
+                    title="Ubicación"
+                    description="Universidad del Valle - Cl. 13 #100-00, Cali, Valle del Cauca" 
                   />
                 </MKBox>
               </Grid>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1991.4464333038143!2d-76.52988882987928!3d3.3763544014358757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a11660b89f4f%3A0xffaffde9d3d8188e!2sEdificio%20B13%2C%20Escuela%20de%20Ingenier%C3%ADa%20de%20Sistemas%20y%20Computaci%C3%B3n!5e0!3m2!1ses!2sco!4v1654666638568!5m2!1ses!2sco" width="600" height="450"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              
             </Grid>
           </Grid>
-          <Grid item xs={12} lg={4} sx={{ ml: "auto", mt: { xs: 3, lg: 0 } }}>
-            <CenteredBlogCard
-              image="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-              title="Get insights on Search"
-              description="Website visitors today demand a frictionless user expericence — especially when using search. Because of the hight standards."
-              action={{
-                type: "internal",
-                route: "pages/company/about-us",
-                color: "info",
-                label: "find out more",
-              }}
-            />
-          </Grid>
+          
         </Grid>
       </Container>
     </MKBox>
