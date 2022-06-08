@@ -49,6 +49,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import AboutUs from "layouts/pages/landing-pages/about-us";
 import Inicio from "layouts/pages/landing-pages/inicio";
 import QuienesSomos from "layouts/pages/landing-pages/quienes-somos";
+import QueNosInteresa from "layouts/pages/landing-pages/que-nos-interesa"
 // import ContactUs from "layouts/pages/landing-pages/contact-us";
 // import Author from "layouts/pages/landing-pages/author";
 // import SignIn from "layouts/pages/authentication/sign-in";
@@ -290,7 +291,7 @@ const routes = [
     name: "Que Nos Interesa",
     icon: <InterestsIcon />,
     route: "/que-nos-interesa",
-    component: <AboutUs />,
+    component: <QueNosInteresa />,
   },
   {
     name: "Artículos",

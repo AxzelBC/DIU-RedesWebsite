@@ -1,3 +1,18 @@
+/*
+=========================================================
+* Material Kit 2 React - v2.0.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-kit-react
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -13,7 +28,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // About Us page sections
-import Information from "pages/LandingPages/AboutUs/sections/Information";
+import InfoQueNosInteresa from "pages/LandingPages/AboutUs/sections/InfoQueNosInteresa";
 import Team from "pages/LandingPages/AboutUs/sections/Team";
 import Featuring from "pages/LandingPages/AboutUs/sections/Featuring";
 import Newsletter from "pages/LandingPages/AboutUs/sections/Newsletter";
@@ -25,7 +40,7 @@ import footerRoutes from "footer.routes";
 // Images
 import bgImage from "assets/images/bg-about-us.jpg";
 
-function QuienesSomos() {
+function QueNosInteresa() {
   return (
     <>
       <MKBox variant="gradient" bgColor="dark" shadow="sm" py={0.25}>
@@ -79,11 +94,13 @@ function QuienesSomos() {
                 },
               })}
             >
-              Quienes Somos
+              Que nos interesa
             </MKTypography>
             <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-              <h4>Laboratorio Lascilab</h4>
+              Actividades y proyectos UnixValle
             </MKTypography>
+            
+            
             
           </Grid>
         </Container>
@@ -97,7 +114,7 @@ function QuienesSomos() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Information />
+        <InfoQueNosInteresa />
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
@@ -106,4 +123,4 @@ function QuienesSomos() {
   );
 }
 
-export default QuienesSomos;
+export default QueNosInteresa;
