@@ -18,9 +18,11 @@ import Team from "pages/LandingPages/AboutUs/sections/Team";
 import Featuring from "pages/LandingPages/AboutUs/sections/Featuring";
 import Newsletter from "pages/LandingPages/AboutUs/sections/Newsletter";
 
+import SignIn from "layouts/pages/authentication/sign-in";
+
 // Routes
-import routes from "routes";
-import footerRoutes from "footer.routes";
+import routes from "routes/pages.routes";
+import footerRoutes from "routes/footer.routes";
 
 // Images
 import bgImage from "assets/images/bg-about-us.jpg";
@@ -32,8 +34,9 @@ function QuienesSomos() {
         <DefaultNavbar
           routes={routes}
           action={{
-            type: "external",
-            route: "https://www.creative-tim.com/product/material-kit-react",
+            type: "internal",
+            route: "/login",
+            component: <SignIn/>,
             label: "Integrantes",
             color: "default",
           }}

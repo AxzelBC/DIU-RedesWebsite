@@ -40,8 +40,8 @@ import Download from "pages/Presentation/sections/Download";
 import BuiltByDevelopers from "pages/Presentation/components/BuiltByDevelopers";
 
 // Routes
-import routes from "routes";
-import footerRoutes from "footer.routes";
+import routes from "routes/pages.routes";
+import footerRoutes from "routes/footer.routes";
 
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
