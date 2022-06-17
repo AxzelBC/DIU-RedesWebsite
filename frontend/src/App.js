@@ -26,11 +26,16 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
 import Presentation from "layouts/pages/presentation";
 
-// Material Kit 2 React routes
+// Material Dashboard 2 React Dark Mode themes
+import themeDark from "assets/theme-dark";
+import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 
 import routesPages from "routes/pages.routes"
 import routesUser from "routes/users.routes"
 
+// Images
+import brandWhite from "assets/images/logo-ct.png";
+import brandDark from "assets/images/logo-ct-dark.png";
 
 export default function App() {
   const { pathname } = useLocation();

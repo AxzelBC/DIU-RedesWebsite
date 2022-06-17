@@ -45,7 +45,7 @@ import bgImage from "assets/images/bg-about-us.jpg";
 function QueNosInteresa() {
   return (
     <>
-      <MKBox variant="gradient" bgColor="dark" shadow="sm" py={0.25}>
+      <MKBox variant="gradient" bgColor="error" shadow="sm" py={0.25}>
         <DefaultNavbar
           routes={routes}
           action={{

@@ -38,12 +38,19 @@ Coded by www.creative-tim.com
 
 // Pages
 import SignIn from "layouts/pages/authentication/sign-in";
+import Dashboard from "layouts/dashboard";
 
 
 const routes = [
   {
     route: "/login",
     component: <SignIn />,
+    key: "login",
+  },
+  {
+    route: "/dashboard",
+    component: <Dashboard />,
+    key: "dashboard",
   },
 ];
 

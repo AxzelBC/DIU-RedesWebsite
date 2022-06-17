@@ -30,7 +30,7 @@ import bgImage from "assets/images/bg-about-us.jpg";
 function Inicio() {
   return (
     <>
-      <MKBox variant="gradient" bgColor="dark" shadow="sm" py={0.25}>
+      <MKBox variant="gradient" bgColor="error" shadow="sm" py={0.25}>
         <DefaultNavbar
           routes={routes}
           action={{
@@ -92,7 +92,7 @@ function Inicio() {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              bgColor="dark"
+              bgColor="error"
               transparent
               borderRadius="lg"
             >
