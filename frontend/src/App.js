@@ -28,7 +28,7 @@ import Presentation from "layouts/pages/presentation";
 
 // Material Dashboard 2 React Dark Mode themes
 import themeDark from "assets/theme-dark";
-import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
+import { useMaterialUIController, setMiniSidenav } from "context";
 
 import routesPages from "routes/pages.routes"
 import routesUser from "routes/users.routes"
@@ -36,6 +36,8 @@ import routesUser from "routes/users.routes"
 // Images
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
+
+import ContextDashboard from "pages/Dashboard";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -62,11 +64,13 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <Routes>
         {getRoutes(routesPages)}
         {getRoutes(routesUser)}
         <Route path="/presentation" element={<Presentation />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/admin/*" element={<ContextDashboard/>}/>
       </Routes>
     </ThemeProvider>
   );

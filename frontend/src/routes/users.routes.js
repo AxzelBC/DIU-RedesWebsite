@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 /** 
   All of the routes for the Material Kit 2 React React are added here,
   You can add a new route, customize the routes and delete the routes here.
@@ -38,7 +23,7 @@ Coded by www.creative-tim.com
 
 // Pages
 import SignIn from "layouts/pages/authentication/sign-in";
-import Dashboard from "layouts/dashboard";
+import Dashboard from "pages/Dashboard/index";
 
 
 const routes = [
@@ -48,7 +33,7 @@ const routes = [
     key: "login",
   },
   {
-    route: "/dashboard",
+    route: "/admin/dashboard",
     component: <Dashboard />,
     key: "dashboard",
   },
