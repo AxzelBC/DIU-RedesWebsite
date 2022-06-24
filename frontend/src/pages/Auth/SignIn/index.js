@@ -24,7 +24,9 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 import routes from "routes/pages.routes";
 
 // Images
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+// import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/bg-about-us.jpg";
+
 
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
