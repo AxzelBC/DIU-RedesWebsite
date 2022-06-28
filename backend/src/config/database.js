@@ -1,8 +1,8 @@
 //PERMITE CONEXION A BASE DE DATOS
 
-const myql2 = require('mysql2');
+const mysql2 = require('mysql2');
 
-const database = myql2.createConnection({
+const database = mysql2.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',

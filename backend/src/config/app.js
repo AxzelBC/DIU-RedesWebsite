@@ -1,5 +1,5 @@
 const express = require('express');
-const UserRoutes= require('../routers/routers');
+const userRoutes= require('../routes/routes');
 const app = express();
 
 // middlewares

@@ -9,3 +9,10 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Usuarios{
+  id_usuario int @default(autoincrement())
+  codigo_estudiante varchar
+  contrasenia varchar
+
+}
