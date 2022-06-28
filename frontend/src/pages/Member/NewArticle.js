@@ -13,7 +13,7 @@ const TextInput = ({ label, ...props }) => {
 
     return(
         <>
-            <Box mb={0.5} ml={0.5} display='block' color='rgb(52, 71, 103)'>
+            <Box mb={0.5} ml={0.5} color='rgb(52, 71, 103)'>
                 <Typography variant="h6" fontWeight={700}>{label}</Typography>
             </Box>
             <MKInput className="text-input" {...field} {...props}/>
@@ -26,7 +26,7 @@ function NewArticle() {
         <DashboardLayout>
             <Box>
                 <Grid container justifyContent='center'>
-                    <Grid item md={12} lg={8} pt={4}>
+                    <Grid item md={12} lg={5} pt={4}>
                         <Card>
 
                             <Box p={2} textAlign='center'>
@@ -43,8 +43,8 @@ function NewArticle() {
                             <Box p={4}>
                                 <Formik>
                                     <Form>
-                                        <Grid container columnSpacing={1} rowSpacing={1}>
-                                            <Grid item xs={12}>
+                                        <Grid container spacing={3} columnSpacing={3} rowSpacing={1}>
+                                            <Grid item>
                                                 <TextInput label='Titulo' />
                                             </Grid>
                                             <Grid item xs={12}>
