@@ -82,7 +82,7 @@ function NewArticle() {
                                         <Box display='flex' flexDirection='column' pb={3}>  
                                             <TextInput label='Titulo' name='title' key='titulo' type='text'/>
                                             <TextInput label='Autores' name='author' key='autores' type='text'/>
-                                            <TextInput label='Resumen' name='abstract' key='resumen' type='text'/>
+                                            <TextInput label='Resumen' name='abstract' key='resumen' type='text' multiline rows={5}/>
                                             <TextInput label='Link' name='link' key='enlace' type='text'/>
                                         </Box>
                                         <Box textAlign='center'>
