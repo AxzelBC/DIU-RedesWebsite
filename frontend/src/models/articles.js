@@ -1,8 +1,7 @@
-import { string } from "prop-types";
-
 export const Article = {
-    title: string,
-    author: string,
-    abstract: string,
-    link: string
+    title: String,
+    author: String,
+    abstract: String,
+    link: String,
+    enable: Boolean,
 }
