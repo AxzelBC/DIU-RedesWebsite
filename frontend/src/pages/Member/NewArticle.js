@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 import Box from "@mui/material/Box";
 import { Formik, Form, useField } from "formik";
 import SendIcon from '@mui/icons-material/Send';
-import { Grid, Card, Typography, Button } from "@mui/material";
+import { Grid, Card, Typography, Button, FormControlLabel, Switch } from "@mui/material";
 
 import { Article } from "models/articles";
 
@@ -84,6 +84,9 @@ function NewArticle() {
                                             <TextInput label='Autores' name='author' key='autores' type='text'/>
                                             <TextInput label='Resumen' name='abstract' key='resumen' type='text' multiline rows={5}/>
                                             <TextInput label='Link' name='link' key='enlace' type='text'/>
+                                        </Box>
+                                        <Box mb={3}>
+                                            <FormControlLabel control={<Switch defaultChecked color="secondary"/>} label="Habilitar" />
                                         </Box>
                                         <Box textAlign='center'>
                                             <Button variant="contained" endIcon={<SendIcon />} type='submit' color='success'>
