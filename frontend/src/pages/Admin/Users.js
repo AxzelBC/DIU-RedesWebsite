@@ -19,10 +19,11 @@ function Users() {
     const { columns, rows } = usersTableData();
     return (
         <DashboardLayout>
-        <MDTypography display="block" variant="h3" fontWeight="medium">
-        Integrantes activos
+        <MDTypography display="block" fontWeight="medium">
+        <h2>Integrantes activos</h2>
+        <h5>Listado de los miembros del laboratorio lascilab</h5>
         </MDTypography>
-          <MDBox pt={6} pb={3}>
+          <MDBox pt={3} pb={3}>
             <Grid container spacing={6}>
               <Grid item xs={12}>
                 <Card>

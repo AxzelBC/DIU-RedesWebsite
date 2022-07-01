@@ -50,6 +50,8 @@ import AboutUs from "layouts/pages/landing-pages/about-us";
 import Inicio from "layouts/pages/landing-pages/inicio";
 import QuienesSomos from "layouts/pages/landing-pages/quienes-somos";
 import QueNosInteresa from "layouts/pages/landing-pages/que-nos-interesa"
+
+import ProfilesList from "examples/Lists/ProfilesList"
 // import SignIn from "layouts/pages/authentication/sign-in";
 
 const routes = [
@@ -87,6 +89,13 @@ const routes = [
     route: "/servicios",
     key: "servicios",
     component: <AboutUs />,
+  },
+  {
+    name: "Profiles",
+    icon: <Icon>laptop</Icon>,
+    route: "/profiles",
+    key: "profiles",
+    component: <ProfilesList />,
   },
 ];
 

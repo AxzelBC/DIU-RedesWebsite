@@ -59,7 +59,7 @@ export default function data() {
       { Header: "Plan académico", accessor: "plan", align: "center" },
       { Header: "Código", accessor: "codigo", align: "left" },
       { Header: "Usuario", accessor: "employed", align: "center" },
-      { Header: "action", accessor: "action", align: "center" },
+      { Header: "accion", accessor: "action", align: "center" },
     ],
 
     rows: [
@@ -97,11 +97,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <Tooltip title="Delete">
-            <IconButton>
-              <Icon>delete</Icon>
-            </IconButton>
-          </Tooltip>
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="text" color="dark">
+              <Icon>edit</Icon>&nbsp;edit
+            </MDButton>
+            <MDButton variant="text" color="primary">
+              <Icon>delete</Icon>&nbsp;delete
+            </MDButton>
+          </Stack>
         ),
       },
       {
@@ -116,9 +119,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit | Delete
-          </MDTypography>
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="text" color="dark">
+              <Icon>edit</Icon>&nbsp;edit
+            </MDButton>
+            <MDButton variant="text" color="primary">
+              <Icon>delete</Icon>&nbsp;delete
+            </MDButton>
+          </Stack>
         ),
       },
       {
@@ -134,12 +142,12 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-          <MDButton variant="contained" color="primary" iconOnly="true">
-            <Icon>edit</Icon>
-          </MDButton>
-          <MDButton variant="contained" color="primary" iconOnly="true">
-            <Icon>delete</Icon>
-          </MDButton>
+            <MDButton variant="text" color="dark">
+              <Icon>edit</Icon>&nbsp;edit
+            </MDButton>
+            <MDButton variant="text" color="primary">
+              <Icon>delete</Icon>&nbsp;delete
+            </MDButton>
           </Stack>
         ),
       },
@@ -155,10 +163,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <MDButton variant="outlined" color="secondary" size="small">
-            <MDTypography variant="caption" color="text">Edit</MDTypography>
-            <Icon sx={{ ml: 1 }}>edit</Icon>
-          </MDButton>
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="text" color="dark">
+              <Icon>edit</Icon>&nbsp;edit
+            </MDButton>
+            <MDButton variant="text" color="primary">
+              <Icon>delete</Icon>&nbsp;delete
+            </MDButton>
+          </Stack>
         ),
       },
       {
@@ -174,14 +186,12 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-          <MDButton variant="outlined" color="secondary" size="small">
-            <MDTypography variant="caption" color="text">Edit</MDTypography>
-            <Icon sx={{ ml: 1 }}>edit</Icon>
-          </MDButton>
-          <MDButton variant="outlined" color="secondary" size="small">
-            <MDTypography variant="caption" color="text">Delete</MDTypography>
-            <Icon sx={{ ml: 1 }}>delete</Icon>
-          </MDButton>
+            <MDButton variant="text" color="dark">
+              <Icon>edit</Icon>&nbsp;edit
+            </MDButton>
+            <MDButton variant="text" color="primary">
+              <Icon>delete</Icon>&nbsp;delete
+            </MDButton>
           </Stack>
         ),
       },
