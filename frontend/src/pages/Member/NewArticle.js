@@ -21,7 +21,7 @@ const yupSchema = Yup.object({
 })
 
 
-const initialValues = {
+const initialValues  = {
     title: "Tesis",
     author: "Jhon Sanabria",
     abstract: "Es siguiente articulo se basa en la creación del laboratorio",

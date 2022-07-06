@@ -30,54 +30,30 @@ function Article() {
                                           aria-controls="panel1a-content"
                                           id="panel1a-header"
                                         >
-                                          <Typography>Tesis de sustentación</Typography>
-                                          
-
+                                          <Typography variant='h4' color='error'>Tesis de sustentación</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
-
                                         {/* Author */}
-                                          <Typography>
+                                          <Typography variant='h5'>
                                             Aurelio Rivas - John Sanabria
                                           </Typography>
-
                                         {/* Descripción */}
-                                          <Typography>
+                                          <Typography variant='body2'>
                                             Esta tesis se basa en la inspección de los sistemas distribuidos dentro de un entorno de trabajo controlado.
                                           </Typography>
 
                                         {/* Enlace */}
-                                          <Button variant="contained">
-                                            Ver Artículo
-                                          </Button>
-
+                                        <Box sx={{ p: 2, border: '1px dashed grey',}}>
+                                          <Button
+                                            variant="outlined"
+                                            href="http://eisc.univalle.edu.co/index.php/laboratorios/redes-y-sistemas-distribuidos"
+                                            target='_blank'>
+                                              <Typography color='black' variant='h6'>
+                                                Ver más
+                                              </Typography>
+                                            </Button>
+                                        </Box>
                                         </AccordionDetails>
-                                      </Accordion>
-
-                                      <Accordion>
-                                        <AccordionSummary
-                                          expandIcon={<ExpandMoreIcon />}
-                                          aria-controls="panel2a-content"
-                                          id="panel2a-header"
-                                        >
-                                          <Typography>Accordion 2</Typography>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                          <Typography>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
-                                          </Typography>
-                                        </AccordionDetails>
-                                      </Accordion>
-
-                                      <Accordion disabled>
-                                        <AccordionSummary
-                                          expandIcon={<ExpandMoreIcon />}
-                                          aria-controls="panel3a-content"
-                                          id="panel3a-header"
-                                        >
-                                          <Typography>Disabled Accordion</Typography>
-                                        </AccordionSummary>
                                       </Accordion>
                                     </div>
 
