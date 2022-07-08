@@ -50,6 +50,7 @@ import AboutUs from "layouts/pages/landing-pages/about-us";
 import Inicio from "layouts/pages/landing-pages/inicio";
 import QuienesSomos from "layouts/pages/landing-pages/quienes-somos";
 import QueNosInteresa from "layouts/pages/landing-pages/que-nos-interesa"
+import ArticlePage from "layouts/pages/landing-pages/articulos";
 
 import ProfilesList from "examples/Lists/ProfilesList"
 // import SignIn from "layouts/pages/authentication/sign-in";
@@ -81,7 +82,7 @@ const routes = [
     icon: <Icon>article</Icon>,
     route: "/articulos",
     key: "articulos",
-    component: <AboutUs />,
+    component: <ArticlePage />,
   },
   {
     name: "Servicios",
