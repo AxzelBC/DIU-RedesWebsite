@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Box, Grid, Card, Typography as Typography, Accordion, AccordionSummary, AccordionDetails, Button } from "@mui/material";
+import  Axios  from 'axios'
+
+import { Box, Grid, Card, Typography as Typography, Accordion, AccordionSummary, AccordionDetails, Button, Icon } from "@mui/material";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+import MDButton from 'components/MDButton/index'
+
 function Article() {
+
+  const [viewState, setViewState] = useState(true);
+
+  const submit = async ({...values}) =>{
+    const data = await Axios.post('');
+  }
+
     return(
         <DashboardLayout>
             <Box>
@@ -43,15 +54,23 @@ function Article() {
                                           </Typography>
 
                                         {/* Enlace */}
-                                        <Box sx={{ p: 2, border: '1px dashed grey',}}>
+                                        <Box sx={{display: 'flex' , p: 2, justifyContent: 'flex-end'}}>
                                           <Button
                                             variant="outlined"
-                                            href="http://eisc.univalle.edu.co/index.php/laboratorios/redes-y-sistemas-distribuidos"
-                                            target='_blank'>
-                                              <Typography color='black' variant='h6'>
-                                                Ver más
+                                            sx={{mr: 2}}
+                                            color='secondary'
+                                            onClick={() => setViewState(!viewState)}
+                                            >
+                                              <Typography color='secondary' fontSize={12} fontWeight={700}>
+                                                 {viewState ? 'hola' : 'bad'} 
                                               </Typography>
                                             </Button>
+                                            <MDButton variant="outlined" color="dark" sx={{mr: 2}}>
+                                              <Icon>edit</Icon>&nbsp;edit
+                                            </MDButton>
+                                            <MDButton variant="outlined" color="primary">
+                                              <Icon>delete</Icon>&nbsp;delete
+                                            </MDButton>
                                         </Box>
                                         </AccordionDetails>
                                       </Accordion>
