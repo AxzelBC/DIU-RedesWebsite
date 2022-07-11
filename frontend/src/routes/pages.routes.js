@@ -65,39 +65,59 @@ const routes = [
   },
   {
     name: "Quienes Somos",
-    icon: <InfoIcon />,
+    icon: <InfoIcon fontSize="small"/>,
     route: "/quienes-somos",
     key: "quienes-somos",
     component: <QuienesSomos />,
   },
   {
     name: "Que Nos Interesa",
-    icon: <InterestsIcon />,
+    icon: <InterestsIcon fontSize="small"/>,
     route: "/que-nos-interesa",
     key: "que-nos-interesa",
     component: <QueNosInteresa />,
   },
   {
     name: "Artículos",
-    icon: <Icon>article</Icon>,
+    icon: <Icon fontSize="small">article</Icon>,
     route: "/articulos",
     key: "articulos",
     component: <ArticlePage />,
   },
   {
     name: "Servicios",
-    icon: <Icon>laptop</Icon>,
+    icon: <Icon fontSize="small">laptop</Icon>,
     route: "/servicios",
     key: "servicios",
     component: <AboutUs />,
-  },
+    collapse: [
+      {
+        name: "Asesorias",
+        route: "/servicios/asesorias",
+        key: "asesorias-usuario",
+        component: <AboutUs />,
+      },
+      {
+        name: "Consultas",
+        route: "/servicios/consultas",
+        key: "consultas-usuario",
+        component: <AboutUs />,
+      },
+      {
+        name: "Reserva",
+        route: "/servicios/reserva",
+        key: "reserva-usuario",
+        component: <AboutUs />,
+      },
+    ]
+  },/* 
   {
     name: "Profiles",
     icon: <Icon>laptop</Icon>,
     route: "/profiles",
     key: "profiles",
     component: <ProfilesList />,
-  },
+  }, */
 ];
 
 export default routes;

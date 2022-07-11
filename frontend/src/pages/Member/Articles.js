@@ -55,16 +55,16 @@ function Article() {
 
                                         {/* Enlace */}
                                         <Box sx={{display: 'flex' , p: 2, justifyContent: 'flex-end'}}>
-                                          <Button
+                                          <MDButton
                                             variant="outlined"
                                             sx={{mr: 2}}
                                             color='secondary'
                                             onClick={() => setViewState(!viewState)}
                                             >
                                               <Typography color='secondary' fontSize={12} fontWeight={700}>
-                                                 {viewState ? 'hola' : 'bad'} 
+                                                 {viewState ? 'Activar' : 'Desactivar'} 
                                               </Typography>
-                                            </Button>
+                                            </MDButton>
                                             <MDButton variant="outlined" color="dark" sx={{mr: 2}}>
                                               <Icon>edit</Icon>&nbsp;edit
                                             </MDButton>
