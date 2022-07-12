@@ -70,7 +70,7 @@ export default function App() {
         {getRoutes(routesUser)}
         <Route path="/presentation" element={<Presentation />} />
         <Route path="*" element={<Navigate to="/" />} />
-        <Route path="/admin/*" element={<ContextDashboard/>}/>
+        <Route path="admin/*" element={<ContextDashboard/>}/>
       </Routes>
     </ThemeProvider>
   );

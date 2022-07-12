@@ -44,7 +44,7 @@ const routes = [
     name: "Dashboard",
     key: "dashboard",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "admin",
+    route: "home",
     component: <Dashboard />,
   },
 

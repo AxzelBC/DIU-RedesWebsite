@@ -46,6 +46,7 @@ import createCache from "@emotion/cache";
 
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
+import Dashboard from "layouts/dashboard";
 
 // Images
 import brandWhite from "assets/images/logo-ct.png";
@@ -164,7 +165,7 @@ export default function ContextDashboard() {
       )}
       <Routes>
         {getRoutes(adminRoutes)}
-        {/* <Route path="/admin" element={<Navigate to="/admin/admin" />}></Route> */}
+        {<Route path="*" element={<Navigate to="/admin/home" />}></Route>}
         {/* <Route path="/dashboard/*" element={<Navigate to="/dashboard/admin/*" />} /> */}
       </Routes>
     </ThemeProvider>
