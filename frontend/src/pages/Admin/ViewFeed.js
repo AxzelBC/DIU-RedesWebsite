@@ -15,8 +15,13 @@ import DataTable from "examples/Tables/DataTable";
 import viewFeedTableData from "pages/Admin/data/viewFeedTableData";
 
 function ViewFeed() {
-    const { columns, rows } = viewFeedTableData();
-    return(
+    const consultarFeed = async () => {
+        const historial = await axios.get("http://localhost:3001/feed", {
+
+        })
+    }
+
+    return (
         <DashboardLayout>
         <MDTypography display="block"  fontWeight="medium">
         <h2>Retroalimentaciones</h2>

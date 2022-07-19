@@ -28,12 +28,12 @@ import Dashboard from "pages/Dashboard/index";
 
 const routes = [
   {
-    route: "/login",
+    route: "login",
     component: <SignIn />,
     key: "login",
   },
   {
-    route: "/admin/dashboard",
+    route: "admin/dashboard",
     component: <Dashboard />,
     key: "dashboard",
   },
