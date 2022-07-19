@@ -16,6 +16,8 @@ import DataTable from "examples/Tables/DataTable";
 import historyPcTableData from "pages/Admin/data/historyPcTableData";
 
 function HistoryPC() {
+  const { columns, rows } = historyPcTableData();
+
     const consultarHistorial = async () => {
         const historial = await axios.get("http://localhost:3001/history", {
 

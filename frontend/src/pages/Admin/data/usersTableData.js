@@ -76,10 +76,10 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <Icon>edit</Icon>&nbsp;edit
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <Icon>delete</Icon>&nbsp;delete
             </MDButton>
           </Stack>
@@ -98,10 +98,10 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <Icon>edit</Icon>&nbsp;edit
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <Icon>delete</Icon>&nbsp;delete
             </MDButton>
           </Stack>
@@ -120,10 +120,10 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <Icon>edit</Icon>&nbsp;edit
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <Icon>delete</Icon>&nbsp;delete
             </MDButton>
           </Stack>
@@ -142,10 +142,10 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <Icon>edit</Icon>&nbsp;edit
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <Icon>delete</Icon>&nbsp;delete
             </MDButton>
           </Stack>
@@ -164,10 +164,10 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <Icon>edit</Icon>&nbsp;edit
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <Icon>delete</Icon>&nbsp;delete
             </MDButton>
           </Stack>
@@ -186,10 +186,10 @@ export default function data() {
         ),
         action: (
           <Stack direction="row" spacing={1}>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <Icon>edit</Icon>&nbsp;edit
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <Icon>delete</Icon>&nbsp;delete
             </MDButton>
           </Stack>

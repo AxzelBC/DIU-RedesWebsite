@@ -71,14 +71,14 @@ export default function data() {
       </MDTypography>,
         tema: <Job title="Ciberseguridad" description="Deseo aprender sobre el manejo de seguridad en la web" />,
         action: (
-          <Stack direction="row" spacing={-2}>
-            <MDButton variant="text" color="dark">
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="outlined" color="dark">
               <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <ClearIcon>denegar</ClearIcon>&nbsp;denegar
             </MDButton>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <AddIcon>mas</AddIcon>&nbsp;ver mas
             </MDButton>
           </Stack>
@@ -96,14 +96,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <Stack direction="row" spacing={-2}>
-            <MDButton variant="text" color="dark">
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="outlined" color="dark">
               <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <ClearIcon>denegar</ClearIcon>&nbsp;denegar
             </MDButton>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <AddIcon>mas</AddIcon>&nbsp;ver mas
             </MDButton>
           </Stack>
@@ -121,14 +121,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <Stack direction="row" spacing={-2}>
-            <MDButton variant="text" color="dark">
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="outlined" color="dark">
               <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <ClearIcon>denegar</ClearIcon>&nbsp;denegar
             </MDButton>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined"  color="dark">
               <AddIcon>mas</AddIcon>&nbsp;ver mas
             </MDButton>
           </Stack>
@@ -146,14 +146,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <Stack direction="row" spacing={-2}>
-            <MDButton variant="text" color="dark">
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="outlined" color="dark">
               <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <ClearIcon>denegar</ClearIcon>&nbsp;denegar
             </MDButton>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <AddIcon>mas</AddIcon>&nbsp;ver mas
             </MDButton>
           </Stack>
@@ -171,14 +171,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <Stack direction="row" spacing={-2}>
-            <MDButton variant="text" color="dark">
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="outlined" color="dark">
               <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <ClearIcon>denegar</ClearIcon>&nbsp;denegar
             </MDButton>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <AddIcon>mas</AddIcon>&nbsp;ver mas
             </MDButton>
           </Stack>
@@ -196,14 +196,14 @@ export default function data() {
           </MDTypography>
         ),
         action: (
-          <Stack direction="row" spacing={-2}>
-            <MDButton variant="text" color="dark">
+          <Stack direction="row" spacing={1}>
+            <MDButton variant="outlined" color="dark">
               <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
             </MDButton>
-            <MDButton variant="text" color="primary">
+            <MDButton variant="outlined" color="primary">
               <ClearIcon>denegar</ClearIcon>&nbsp;denegar
             </MDButton>
-            <MDButton variant="text" color="dark">
+            <MDButton variant="outlined" color="dark">
               <AddIcon>mas</AddIcon>&nbsp;ver mas
             </MDButton>
           </Stack>
