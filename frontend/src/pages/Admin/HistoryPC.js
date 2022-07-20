@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import axios from "axios";
 
@@ -26,6 +27,7 @@ function HistoryPC() {
     
     return(
         <DashboardLayout>
+        <DashboardNavbar />
         <MDTypography display="block"  fontWeight="medium">
         <h2>Historial reserva de equipos</h2>
         <h5>Listado de las reservas de equipos del ultimo mes</h5>

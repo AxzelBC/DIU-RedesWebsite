@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 
 // @mui material components
@@ -33,6 +34,7 @@ function NewUser() {
 
   return (
     <DashboardLayout>
+      <DashboardNavbar />
       <MDTypography display="block" fontWeight="medium">
         <h2>Solicitudes</h2>
         <h5>Listado de solicitudes para pertenecer al laboratorio lascilab</h5>

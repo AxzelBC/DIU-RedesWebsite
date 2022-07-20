@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import MKInput from "components/MKInput";
 
@@ -76,6 +77,7 @@ function NewInventary() {
 
     return (
         <DashboardLayout>
+        <DashboardNavbar />
             Crear el inventario de un equipo
             <Box>
                 <Grid container justifyContent='center'>

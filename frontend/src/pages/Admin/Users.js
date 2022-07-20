@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 
 // @mui material components
@@ -34,6 +35,7 @@ function Users() {
 
   return (
     <DashboardLayout>
+      <DashboardNavbar />
       <MDTypography display="block" fontWeight="medium">
         <h2>Integrantes activos</h2>
         <h5>Listado de los miembros del laboratorio lascilab</h5>

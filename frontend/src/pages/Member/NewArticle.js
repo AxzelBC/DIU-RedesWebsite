@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import MKInput from "components/MKInput";
 
 import * as Yup from 'yup'
 import Box from "@mui/material/Box";
 import { Formik, Form, useField } from "formik";
 import SendIcon from '@mui/icons-material/Send';
-import { Grid, Card, Typography, Button, FormControlLabel, Switch } from "@mui/material";
+import { Grid, Card, Typography, Button, FormControlLabel, Switc, FormControl, InputLabel, Select, MenuItem, Switch } from "@mui/material";
 
 import { Article } from "models/articles";
 
@@ -55,6 +56,7 @@ function NewArticle() {
 
     return(
         <DashboardLayout>
+        <DashboardNavbar />
             <Box>
                 <Grid container justifyContent='center'>
                     <Grid item md={12} lg={10} pt={10}>
@@ -84,7 +86,26 @@ function NewArticle() {
                                             <TextInput label='Autores' name='author' key='autores' type='text'/>
                                             <TextInput label='Resumen' name='abstract' key='resumen' type='text' multiline rows={5}/>
                                             <TextInput label='Link' name='link' key='enlace' type='text'/>
+                                            
                                         </Box>
+
+                                        <Box sx={{ minWidth: 120 }} className='row-span-1'>
+                                          <FormControl fullWidth>
+                                            <InputLabel id="listar-evento">Evento</InputLabel>
+                                            <Select
+                                              labelId="listar-evento"
+                                              id="listar-evento-select"
+                                              value='3'
+                                              label="Evento"
+                                            >
+                                                <MenuItem key='articulos' value='articulos'>Articulos</MenuItem>
+                                                <MenuItem key='tesis' value='tesis'>Tesis</MenuItem>
+                                                <MenuItem key='poster' value='poster'>Poster</MenuItem>
+                                                <MenuItem key='otros' value='otros'>Otros</MenuItem>
+                                            </Select>
+                                          </FormControl>
+                                        </Box>
+
                                         <Box mb={3}>
                                             <FormControlLabel control={<Switch defaultChecked color="secondary"/>} label="Habilitar" />
                                         </Box>

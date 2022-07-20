@@ -4,6 +4,7 @@ import  Axios  from 'axios'
 
 import { Box, Grid, Card, Typography as Typography, Accordion, AccordionSummary, AccordionDetails, Button, Icon } from "@mui/material";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import MDButton from 'components/MDButton/index'
@@ -18,6 +19,7 @@ function Article() {
 
     return(
         <DashboardLayout>
+        <DashboardNavbar />
             <Box>
                 <Grid container justifyContent='center'>
                     <Grid item md={12} lg={10} pt={10}>

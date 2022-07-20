@@ -2,6 +2,7 @@
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 
 import { Box, Grid, Card, Typography as Typography, Accordion, AccordionSummary, AccordionDetails, Button, Icon } from "@mui/material";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import MDButton from 'components/MDButton/index'
@@ -16,6 +17,7 @@ function ViewFeed() {
 
     return (
         <DashboardLayout>
+        <DashboardNavbar />
          Ver las opiniones
             <Box>
                 <Grid container justifyContent='center'>
