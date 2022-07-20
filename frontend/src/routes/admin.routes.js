@@ -78,6 +78,12 @@ const routes = [
     component: <NewArticle />,
   },
   {
+    type: "hidden",
+    name: "Editar artículo",
+    key: "edit-article",
+    route: "/articles/edit",
+  },
+  {
     type: "collapse",
     name: "Ver artículos",
     key: "view-articles",

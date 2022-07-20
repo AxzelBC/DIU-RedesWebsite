@@ -41,7 +41,7 @@
     "react-flatpickr": "3.10.7",
     "react-github-btn": "1.2.1",
     "react-router-dom": "6.0.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.0",
     "react-syntax-highlighter": "15.4.5",
     "react-table": "7.7.0",
     "stylis": "4.0.13",
@@ -55,6 +55,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "dev": "react-scripts start",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "eslintConfig": {
