@@ -3,5 +3,6 @@ export const Article = {
     author: String,
     abstract: String,
     link: String,
+    categorie: String,
     enable: Boolean,
 }
