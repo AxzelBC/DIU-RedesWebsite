@@ -158,7 +158,8 @@ const loginUsuario = async (req, res) => {
 
                 res.cookie('jwt', token, cookieOptions)
                   */
-                res.render('login', {
+                 req.session.loggedin = true;
+                res.render('/', {
                     alert: true,
                     alertTitle: "Conexión exitosa",
                     alertMessage: "LOGIN CORRECTO!",
@@ -237,6 +238,40 @@ res.redirect('/')
 }
 
 
+const nameUser = async (codigo)=>{
+    const sql = await 'SELECT nombre FROM datos_personales_usuario WHERE codigo_usuario = ?';
+    con.query(sql, [codigo], (err, result) => {
+      if (err) throw err;
+      console.log(result);    
+});
+}
+
+const autenticar = (req, res)=>{
+if(req.session.loggedin){
+res.render('/',{
+   login: true,
+   nameUserr: nameUser(req.body.codigo_usuario)
+})
+
+}else{
+
+    res.render('/login',{
+        login: falase,
+        name: 'debe iniciar sesion'
+    })
+}
+}
+
+/*
+const isLogout= (req,res){
+req.session.destroy((=>{
+    res.redirect('/')
+}))
+
+}
+
+*/
+
 const crearArticulo = async (req , res)=>{
     const {autores, link, resumen, titulo} = req.body
      
@@ -254,15 +289,16 @@ const crearArticulo = async (req , res)=>{
      
      const editarArticulo = async (req,res)=>{
  
-         const {id_articulo} = req.params.id_articulo;
+         const {id_articulo} = req.params;
          const {autores, link, resumen, titulo} = req.body
 
 
-         const createQuery =`UPDATE articulos
-         SET ? WHERE id_articulo=?`;
+       // `UPDATE articulos SET ? WHERE id_articulo=?`;
 
 
-        const query= await mysql2.format(createQuery,  [req.body, id_articulo] );
+        const createQuery =`UPDATE articulos SET autores=?, link=?, resumen=?, titulo =? WHERE id_articulo=?`;
+
+        const query= await mysql2.format(createQuery,  [autores, link, resumen, titulo, id_articulo] );
 
 
          database.query(query,(err, result) => {
@@ -299,7 +335,7 @@ const crearArticulo = async (req , res)=>{
     }
      
      const eliminarArticulo = async (req,res)=>{
-        const {id_articulo} = req.params.id_articulo;
+        const {id_articulo} = req.params;
 
         createQuery =`DELETE FROM articulos WHERE id_articulo=?`
         query = await mysql2.format(createQuery,[id_articulo])
