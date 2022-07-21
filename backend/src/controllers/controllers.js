@@ -1,6 +1,9 @@
 const database = require('../config/database');
 const mysql2 = require('mysql2');
+const jwt = require('jsonwebtoken');
 const session = require('express-session');
+const bcryptjs = require('bcryptjs');
+const {promisify} = require('util');
 
 
 // ========= SELECT DE DATOS ===========
@@ -33,44 +36,302 @@ const testUsuario = (req, res) => {
 
 // ========= REGISTRO DE USUARIOS ===========
 
-const loginUsuario = (req, res) => {
+const registroDatosUsuario = async (req, res) => {
 
-    const { codigo, contraseña } = req.body
-    const createQuery = `SELECT * FROM users WHERE codigo_estudiante = ? `;
-    const query = mysql2.format(createQuery, [codigo]);
+   
+    
+    //console.log(codigo_usuario+" - "+nombre +" - "+apellido+" - "+correo+" - "+programa+" - "+cargo+" - "+tipo_usuario);
 
+    const { codigo_usuario , nombre , apellido , correo, programa , cargo , tipo_usuario, password} = req.body;
+    //let passHash = await bcryptjs.hash(contrasenia,8);
+
+    const createQuery = `INSERT INTO datos_personales_usuarios(codigo_usuario,nombre,apellido,
+        correo, programa , cargo , tipo_usuario,password)  VALUE(?, ?, ?, ?, ?, ?, ?, ?)`;
+    const query = await mysql2.format(createQuery, [codigo_usuario , nombre , apellido , correo, programa , cargo , tipo_usuario,password]);
+    
+/*
+    const createQueryUser = `INSERT INTO usuarios(codigo_estudiante,contrasenia)  VALUES (?, ?)`;
+    const queryUser = await mysql2.format(createQueryUser, [codigo_usuario, passHash])
+*/
+    
     database.query(query, (err, result) => {
+        if (err) res.send('Ocurrió un error');
+        // console.log(result); 
+        res.send({ message: 'Datos de usuario creados' });
+    }
+    
+    
+    );  
+
+    
+   /*
+    database.query(queryUser, (err, result) => {
         if (err) throw err;
+        // console.log(result);
+        res.send({ message: 'Usuario creado' });
+    }
+    
+    );   */
+
+};
+
+const registroUsuario = async (req, res) => {
+  
+  
+    const { codigo, password ,  estado} = req.body;
+//let passHash = await bcryptjs.hash(password,8);
+
+    const createQuery = `INSERT INTO usuarios(codigo,password, estado) VALUE(?, ?, ?)`;
+    const query = mysql2.format(createQuery, [codigo, password, estado]);
+    
+    database.query(query, (err, result) => {
+        if (err) res.send({ message: 'No fue posible registrar el usuario. Verifique que el codigo haga parte de la solicitud.' });
+        //throw err;
         // console.log(result);
         res.send({ message: 'Usuario creado' });
     });
 };
 
+const rutaPrincipal= (req, res)=>{
 
-const registroDatosUsuario = (req, res) => {
-    const { pais, codigo, universidad, programa } = req.body;
-    const createQuery = `INSERT INTO datos_personales_usuarios(pais,codigo_convenio,universidad,programa) VALUE(?, ?, ?, ?)`;
-    const query = mysql2.format(createQuery, [pais, codigo, universidad, programa]);
-
-    database.query(query, (err, result) => {
-        if (err) throw err;
-        // console.log(result);
-        res.send({ message: 'Usuario creado' });
-    });
+    res.send('Hola Mundo');
 };
+
+const rutaP= (req, res)=>{
+
+    res.send('Hola Mundo');
+};
+
+
+const loginUsuario = async (req, res) => {  
+
+    const { codigo, password } = req.body
+
+
+    if (!codigo || !password) {
+
+        res.render('login', {
+            alert: true,
+            alertTitle: "Advertencia",
+            alertMessage: "Ingrese un usuario y paswword",
+            alertIcon: 'info',
+            showConfirmButton: true,
+            ruta: 'login'
+        }
+        )
+        res.json({ message: 'Digite usuario y contraseña' })
+
+
+    } else {
+        const readQuery = `SELECT * FROM usuarios WHERE codigo=?;`;
+        const query = mysql2.format(readQuery, [codigo]);
+
+        database.query(query, (err, result) => {
+
+            if (err) throw console.log("error al buscar la información en la base de datos");
+            if (result.length == 0 || !(password == result[0].password)) {
+                res.render('login', {
+                    alert: true,
+                    alertTitle: "Advertencia",
+                    alertMessage: "Ingrese un usuario y paswword válidos",
+                    alertIcon: 'info',
+                    showConfirmButton: true,
+                    ruta: 'login'
+                }
+                )
+                res.json({ message: 'usuario y contraseña incorrectos!' })
+
+
+
+            } else {
+                /*
+                const id = result[0].id_usuario
+                const token = jwt.sign({ id: id }, process.env.JWT_SECRETO, {
+                    expiresIn: process.env.JWT_TIEMPO_EXPIRA
+                })
+                  console.log("TOKEN: "+token+" para el usuario con codigo: "+codigo)
+
+                  const cookieOptions = {
+                    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                    httpOnly: true
+                }
+
+                res.cookie('jwt', token, cookieOptions)
+                  */
+                res.render('login', {
+                    alert: true,
+                    alertTitle: "Conexión exitosa",
+                    alertMessage: "LOGIN CORRECTO!",
+                    alertIcon: 'success',
+                    showConfirmButton: false,
+                    timer: 800, 
+                    ruta: ''
+                })
+                res.json({message: "¡inicio de sesion exitosa!"})
+
+            }
+        })
+
+  /*
+    if(codigo_estudiante == "333628" && contrasenia=="adminlascilab2022"){
+    
+    res.render('dashboard',{
+     alert:true,
+     alertTitle: "Advertencia",
+     alertMessage: "Ingrese un usuario y paswword",
+     alertIcon: 'info',
+     showConfirmButton: true,
+     ruta: 'login'
+     }
+     )
+     res.json({message: 'Bienvenido sanabria'})
+     
+    res.send({message: "Bienvenido sanaGod"});
+    } else{
+
+        res.send({message: "Ingrese usuario y password válidos!"});
+    }  
+   */
+
+
+
+    }
+
+    
+
+
+//metodo para verificar si un usuario está autenticado, es decir si hay una sesion activa
+
+/*
+const authenticarUser = async (req, res)=>{
+if(req.cookieOptions.jwt){
+try {
+    const decodificada = await promisify(jwt.verify)(req.cookieOptions.jwt, process.env.JWT_SECRETO)
+    mysql2.query('SELECT FROM usuarios WHERE id_usuario =?', [decodificada.id], (error, result)=>{
+    if(!result){return next()}
+        req.codigo = result[0]
+        return next()
+    })
+} catch (error) {
+    console.log(error)
+    return next()
+}
+
+}else{
+    res.redirect('/login')
+}
+
+
+
+}
+
+const logout = async (req, res)=>{
+//eliminamos la cookie y nos redirigimos a la ruta principal
+res.clearCookie('jwt')
+res.redirect('/')
+
+}
+
+*/ 
+
+}
+
+
+const crearArticulo = async (req , res)=>{
+    const {autores, link, resumen, titulo} = req.body
+     
+    const createQuery = `INSERT INTO articulos(autores, link, resumen, titulo) VALUE(?, ?, ?, ?)`;
+     const query = await mysql2.format(createQuery, [autores, link, resumen, titulo]);
+     
+     database.query(query, (err, result) => {
+         if (err) res.send({ message: 'Error del administrador al crear un artículo'});
+         //throw err;
+         // console.log(result);
+         res.send({ message: '¡Artículo creado con éxito!' });
+     });
+ 
+     }
+     
+     const editarArticulo = async (req,res)=>{
+ 
+         const { id_articulo} = req.params;
+         const {autores, link, resumen, titulo} = req.body
+
+         const createQuery =`UPDATE articulos
+         SET autores=?, link=?, resumen=?, titulo=? 
+          WHERE id_articulo=?`;
+
+
+        const query= await mysql2.format(createQuery, [autores,link, resumen,titulo, id_articulo]);
+
+
+         database.query(query, (err, result) => {
+         if (err) res.send({ message: 'error al tratar de comunicarse con la base de datos! '});
+         if (result[0] !== undefined) {
+            
+           res.json({ message:'¡artículo editado con éxito!'});
+        } else {
+            res.json({ message:'No existe ningún artículo con código '+id_articulo+' para editar'});
+        }
+
+ 
+     })
+    };
+
+
+    
+
+
+    
+ 
+ 
+     const buscarArticulo = async (req,res)=>{
+    
+         const { id_articulo} = req.params;
+         const createQuery =`SELECT * FROM articulos WHERE id_articulo=?`
+
+        const query= await mysql2.format(createQuery, [id_articulo]);
+      
+        database.query(query, (err, result) => {
+         if (err) res.send({ message: 'Error al comunicarse con la base de datos'});
+         if(result[0] !== undefined){
+            res.status(200).json(result[0]);
+    
+
+         }else{
+            res.status(400).send('el articulo no existe')
+
+         }
+     })
+      
+    }
+     
+     const eliminarArticulo = async (req,res)=>{
+        const { id_articulo} = req.params;
+
+        createQuery =`DELETE FROM articulos WHERE id_articulo=?`
+        query = await mysql2.format(createQuery,[id_articulo])
+
+       database.query(query, (err, result) => {
+        if (err) res.send({ message: 'Error al comunicarse con la base de datos'});
+        if(result[0] !== undefined){
+      
+
+           res.status(200).json({message: '¡Artículo borrado con éxito!'});
+   
+
+        }else{
+           res.status(400).send('el artículo no existe. No se puede borrar')
+
+        }
+    })
+     };
+ 
+
+
+
 
 //METODO QUE SOLO HARA USO EL ADMIN
-const registroUsuario = (req, res) => {
-    const { codigo, contraseña } = req.body;
-    const createQuery = `INSERT INTO usuarios(codigo_estudiante,contrasenia) VALUE(?, ?)`;
-    const query = mysql2.format(createQuery, [codigo, contraseña]);
-
-    database.query(query, (err, result) => {
-        if (err) throw err;
-        // console.log(result);
-        res.send({ message: 'Usuario creado' });
-    });
-};
 
 
 /*
@@ -115,10 +376,17 @@ app.get('/content', auth, function (req, res) {
 
 */
 
+
 module.exports = {
     testUsuario,
     loginUsuario,
     registroDatosUsuario,
-    registroUsuario
+    registroUsuario,
+    crearArticulo,
+    editarArticulo,
+    buscarArticulo,
+    eliminarArticulo,
+    editarArticulo,
+    rutaPrincipal
 
 }

@@ -10,9 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuarios{
-  id_usuario int @default(autoincrement())
-  codigo_estudiante varchar
-  contrasenia varchar
+model articulos{
+  id_usuario Int @id @default(autoincrement())
+  autores String @db.Text
+  titulo String @db.Text
+  link String @db.Text
+  resumen String @db.Text
 
 }
