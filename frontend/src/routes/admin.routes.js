@@ -32,6 +32,7 @@ import NewUser from "pages/Admin/NewUser";
 import Users from "pages/Admin/Users";
 import NewArticle from "pages/Member/NewArticle";
 import Article from "pages/Member/Articles";
+import EditArticle from "pages/Member/EditArticle";
 import Consultancies from "pages/Member/Consultancies";
 import ViewFeed from "pages/Admin/ViewFeed";
 import NewInventary from "pages/Admin/NewInventary";
@@ -82,6 +83,7 @@ const routes = [
     name: "Editar artículo",
     key: "edit-article",
     route: "/articles/edit",
+    component: <EditArticle />
   },
   {
     type: "collapse",

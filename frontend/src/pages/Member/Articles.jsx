@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import  Axios  from 'axios'
 
@@ -9,12 +10,28 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import MDButton from 'components/MDButton/index'
 
-function Article() {
+
+
+
+function Articles() {
+
+  const navigate = useNavigate();
+
+  const [articles, setArticle] = useState([]);
+
+  const article = {
+    title: 'Sustentación',
+    author: 'Aurelio Rivas - John Sanabria',
+    description: 'Esta tesis se basa en la inspección de los sistemas distribuidos dentro de un entorno de trabajo controlado',
+    link: 'http://eisc.univalle.edu.co/index.php/laboratorios/redes-y-sistemas-distribuidos',
+    categorie: 'tesis',
+    view: true,
+  }
 
   const [viewState, setViewState] = useState(true);
 
-  const submit = async ({...values}) =>{
-    const data = await Axios.post('');
+  const getArticles = async () =>{
+    const { data } = await Axios.post('');
   }
 
     return(
@@ -42,8 +59,24 @@ function Article() {
                                           expandIcon={<ExpandMoreIcon />}
                                           aria-controls="panel1a-content"
                                           id="panel1a-header"
+                                          
                                         >
-                                          <Typography variant='h4' color='error'>Tesis de sustentación</Typography>
+                                          <Box>
+                                            <Typography 
+                                              color='error'
+                                              fontSize={30} fontWeight={100}
+                                            >
+                                              <strong>Titulo:</strong>
+                                              {` ${article.title}`}
+                                            </Typography>
+                                            <Typography 
+                                              fontSize={20} 
+                                              fontWeight={100} 
+                                              color='black'>
+                                              <strong>Categoria:</strong>
+                                              {` ${article.categorie}`}
+                                            </Typography>
+                                          </Box>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                         {/* Author */}
@@ -67,11 +100,18 @@ function Article() {
                                                  {viewState ? 'Activar' : 'Desactivar'} 
                                               </Typography>
                                             </MDButton>
-                                            <MDButton variant="outlined" color="dark" sx={{mr: 2}}>
-                                              <Icon>edit</Icon>&nbsp;edit
+                                            <MDButton 
+                                              variant="outlined"
+                                              color="dark"
+                                              sx={{mr: 2}}
+                                              onClick={() => navigate('./edit')}
+                                              >
+                                              <Icon>
+                                                  edit
+                                                </Icon>&nbsp;editar
                                             </MDButton>
                                             <MDButton variant="outlined" color="primary">
-                                              <Icon>delete</Icon>&nbsp;delete
+                                              <Icon>delete</Icon>&nbsp;borrar
                                             </MDButton>
                                         </Box>
                                         </AccordionDetails>
@@ -90,4 +130,4 @@ function Article() {
     )
 }
 
-export default Article;
+export default Articles;

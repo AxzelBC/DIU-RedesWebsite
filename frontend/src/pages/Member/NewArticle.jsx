@@ -8,9 +8,7 @@ import * as Yup from 'yup'
 import Box from "@mui/material/Box";
 import { Formik, Form, useField } from "formik";
 import SendIcon from '@mui/icons-material/Send';
-import { Grid, Card, Typography, Button, FormControlLabel, Switc, FormControl, InputLabel, Select, MenuItem, Switch } from "@mui/material";
-
-import { Article } from "models/articles";
+import { Grid, Card, Typography, Button, FormControlLabel, FormControl, InputLabel, Select, MenuItem, Switch } from "@mui/material";
 
 
 const yupSchema = Yup.object({
@@ -48,10 +46,16 @@ const TextInput = ({ label, ...props }) => {
 
 function NewArticle() {
 
+    const [categorie, setCategorie] = useState('');
+
     const onSubmit = async (values, { setSubmitting }) => {
         
         //await axios.post('/api/users/', { action: 'create', ...values })
         setSubmitting(false);
+    }
+
+    const handleCategorie = (event) =>{
+        setCategorie(event.target.value);
     }
 
     return(
@@ -78,7 +82,6 @@ function NewArticle() {
                                 <Formik
                                 initialValues={initialValues}
                                 validationSchema={yupSchema}
-                                /*onSubmit={onSubmit} */
                                 >
                                     <Form>
                                         <Box display='flex' flexDirection='column' pb={3}>  
@@ -89,19 +92,20 @@ function NewArticle() {
                                             
                                         </Box>
 
-                                        <Box sx={{ minWidth: 120 }} className='row-span-1'>
+                                        <Box m={2} className='row-span-1'>
                                           <FormControl fullWidth>
-                                            <InputLabel id="listar-evento">Evento</InputLabel>
+                                            <InputLabel id="listar-categoria">categoria</InputLabel>
                                             <Select
-                                              labelId="listar-evento"
-                                              id="listar-evento-select"
-                                              value='3'
-                                              label="Evento"
+                                              labelId="listar-categoria"
+                                              id="listar-categoria-select"
+                                              value={categorie}
+                                              label="categoria"
+                                              onChange={handleCategorie}
                                             >
-                                                <MenuItem key='articulos' value='articulos'>Articulos</MenuItem>
+                                                <MenuItem key='articulos' value='articulo'>Articulo</MenuItem>
                                                 <MenuItem key='tesis' value='tesis'>Tesis</MenuItem>
                                                 <MenuItem key='poster' value='poster'>Poster</MenuItem>
-                                                <MenuItem key='otros' value='otros'>Otros</MenuItem>
+                                                <MenuItem key='otros' value='otro'>Otros</MenuItem>
                                             </Select>
                                           </FormControl>
                                         </Box>
