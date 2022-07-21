@@ -254,28 +254,24 @@ const crearArticulo = async (req , res)=>{
      
      const editarArticulo = async (req,res)=>{
  
-         const { id_articulo} = req.params;
+         const {id_articulo} = req.params.id_articulo;
          const {autores, link, resumen, titulo} = req.body
 
+
          const createQuery =`UPDATE articulos
-         SET autores=?, link=?, resumen=?, titulo=? 
-          WHERE id_articulo=?`;
+         SET ? WHERE id_articulo=?`;
 
 
-        const query= await mysql2.format(createQuery, [autores,link, resumen,titulo, id_articulo]);
+        const query= await mysql2.format(createQuery,  [req.body, id_articulo] );
 
 
-         database.query(query, (err, result) => {
-         if (err) res.send({ message: 'error al tratar de comunicarse con la base de datos! '});
-         if (result[0] !== undefined) {
-            
-           res.json({ message:'¡artículo editado con éxito!'});
-        } else {
-            res.json({ message:'No existe ningún artículo con código '+id_articulo+' para editar'});
-        }
-
- 
-     })
+         database.query(query,(err, result) => {
+         if (err) {res.send({ message: 'error al tratar de comunicarse con la base de datos! '})
+        }else{            
+         
+         res.json({ message:'¡artículo editado con éxito!'}); 
+     }
+    })
     };
 
 
@@ -287,43 +283,33 @@ const crearArticulo = async (req , res)=>{
  
      const buscarArticulo = async (req,res)=>{
     
-         const { id_articulo} = req.params;
+         const {id_articulo} = req.params.id_articulo;
          const createQuery =`SELECT * FROM articulos WHERE id_articulo=?`
 
         const query= await mysql2.format(createQuery, [id_articulo]);
       
         database.query(query, (err, result) => {
          if (err) res.send({ message: 'Error al comunicarse con la base de datos'});
-         if(result[0] !== undefined){
-            res.status(200).json(result[0]);
-    
+         //result.fieldCount
+            res.status(200).send(result);
 
-         }else{
-            res.status(400).send('el articulo no existe')
-
-         }
+            //res.status(400).send('el articulo no existe')
      })
       
     }
      
      const eliminarArticulo = async (req,res)=>{
-        const { id_articulo} = req.params;
+        const {id_articulo} = req.params.id_articulo;
 
         createQuery =`DELETE FROM articulos WHERE id_articulo=?`
         query = await mysql2.format(createQuery,[id_articulo])
 
        database.query(query, (err, result) => {
         if (err) res.send({ message: 'Error al comunicarse con la base de datos'});
-        if(result[0] !== undefined){
-      
-
+         
            res.status(200).json({message: '¡Artículo borrado con éxito!'});
    
-
-        }else{
-           res.status(400).send('el artículo no existe. No se puede borrar')
-
-        }
+          // res.status(400).send('el artículo no existe. No se puede borrar')
     })
      };
  
