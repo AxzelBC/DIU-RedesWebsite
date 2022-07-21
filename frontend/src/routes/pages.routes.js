@@ -53,6 +53,10 @@ import QueNosInteresa from "layouts/pages/landing-pages/que-nos-interesa"
 import ArticlePage from "layouts/pages/landing-pages/articulos";
 
 import ProfilesList from "examples/Lists/ProfilesList"
+import Reservas from "pages/LandingPages/Servicios/Reservas";
+import Consultas from "pages/LandingPages/Servicios/Consultas";
+import Asesorias from "pages/LandingPages/Servicios/Asesorias";
+import Unirse from "pages/LandingPages/Servicios/Unirse";
 // import SignIn from "layouts/pages/authentication/sign-in";
 
 const routes = [
@@ -95,19 +99,25 @@ const routes = [
         name: "Asesorias",
         route: "/servicios/asesorias",
         key: "asesorias-usuario",
-        component: <AboutUs />,
+        component: <Asesorias />,
       },
       {
         name: "Consultas",
         route: "/servicios/consultas",
         key: "consultas-usuario",
-        component: <AboutUs />,
+        component: <Consultas />,
       },
       {
         name: "Reserva",
         route: "/servicios/reserva",
         key: "reserva-usuario",
-        component: <AboutUs />,
+        component: <Reservas />,
+      },
+      {
+        name: "Unirse",
+        route: "/servicios/unirse",
+        key: "unirse-integrante",
+        component: <Unirse />,
       },
     ]
   },/* 
