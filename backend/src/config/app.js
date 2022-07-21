@@ -12,11 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('',async(req, res)=>{
-const result = await prisma.articulos.findMany()
-
-
-})
 
 //setando las variables de entorno
 //dotenv.config({path: '/.env'})

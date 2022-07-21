@@ -34,7 +34,7 @@ router.get('usuarios/reservaPc',authenticarUser)
 router.post('/login',loginUsuario);
 router.post('/datos',registroDatosUsuario);
 router.post('/register',registroUsuario);
-router.post('/admin/newAticle',crearArticulo);
+router.post('/admin/newArticle',crearArticulo);
 
 
 
