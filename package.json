@@ -5,6 +5,7 @@
   "author": "Creative Tim",
   "license": "See license in https://www.creative-tim.com/license",
   "description": "Página del laboratorio de Redes - Universidad del Valle",
+
   "bugs": {
     "url": "https://github.com/creativetimofficial/ct-material-kit-react/issues"
   },
@@ -20,6 +21,7 @@
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
+
     "@mui/icons-material": "^5.2.1",
     "@mui/material": "^5.2.1",
     "@mui/styled-engine": "^5.2.1",
@@ -57,6 +59,7 @@
     "dev": "react-scripts start",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
@@ -70,4 +73,3 @@
     ]
   },
   "devDependencies": {}
-}
