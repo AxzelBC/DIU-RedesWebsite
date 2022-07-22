@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from 'utils/firebase';
+import { useNavigate } from "react-router-dom";
 
 // react-router-dom components
 import { Link } from "react-router-dom";
@@ -7,7 +10,6 @@ import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
-import MuiLink from "@mui/material/Link";
 
 
 // Material Kit 2 React components
@@ -24,14 +26,41 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 import routes from "routes/pages.routes";
 
 // Images
-// import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 import bgImage from "assets/images/bg-about-us.jpg";
 
 
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
-
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  //Login - Firebase
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [msgError, setMsgError] = useState(null);
+  
+  const loginUsuario = () => {
+    signInWithEmailAndPassword(auth,email,pass)
+
+        .then( (r) => {
+            navigate('/admin');
+        })
+        .catch( (err) => {
+            //Firebase: Error (auth/wrong-password)
+            if (err.code === 'auth/wrong-password') {
+                setMsgError('Contraseña incorrecta');
+            }
+            //Firebase: Error (auth/user-not-found).
+            if (err.code === 'auth/user-not-found') {
+                setMsgError('El usuario no existe');
+            }
+            //Firebas: Error (auth/invalid-email)
+                setMsgError('El usuario no existe');
+            if (err.code === 'auth/invalid-email')
+                setMsgError('El correo es invalido');
+            console.log(err)
+    })
+}
 
   return (
     <>
@@ -85,10 +114,10 @@ function SignInBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput type="email" label="Email" fullWidth onChange={(e) => { setEmail(e.target.value) }}/>
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput type="password" label="Password" fullWidth onChange={(e) => { setPass(e.target.value) }}/>
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
                     <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -103,12 +132,24 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="error" fullWidth>
+                    <MKButton variant="gradient" color="error" fullWidth onClick={loginUsuario}>
                       iniciar sesión
                     </MKButton>
                   </MKBox>
-                  <MKBox mt={3} mb={1} textAlign="center">
-                  </MKBox>
+                  {
+                    msgError != null ?
+                    (
+                        <>
+                            <MKBox mt={3} mb={1} textAlign="center">
+                            {msgError}
+                            </MKBox>
+                        </>
+                    )
+                    :
+                    (
+                        <span></span>
+                    )
+                  }
                 </MKBox>
               </MKBox>
             </Card>
