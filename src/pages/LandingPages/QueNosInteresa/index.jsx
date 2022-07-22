@@ -12,10 +12,6 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-//React components
-import {
-  Fragment
-} from "react";
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -47,7 +43,7 @@ import bgImage from "assets/images/bg-about-us.jpg";
 
 function QueNosInteresa() {
   return (
-    <Fragment>
+    <>
       <MKBox variant="gradient" bgColor="error" shadow="sm" py={0.25}>
         <DefaultNavbar
           routes={routes}
@@ -125,7 +121,7 @@ function QueNosInteresa() {
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
-    </Fragment>
+    </>
   );
 }
 
