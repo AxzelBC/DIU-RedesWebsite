@@ -14,7 +14,6 @@ import { Formik, Form, useField } from "formik";
 import SendIcon from '@mui/icons-material/Send';
 import { Grid, Card, Typography, Button, FormControlLabel, FormControl, InputLabel, Select, MenuItem, Switch } from "@mui/material";
 
-
 // Routes
 import routes from "routes/pages.routes";
 import footerRoutes from "routes/footer.routes";
@@ -120,7 +119,6 @@ const handleEnfoque = (event) =>{
             </MKBox>
 
             <MKBox>
-            
                 <Grid container justifyContent='center'>
                     <Grid item md={12} lg={10} pt={10}>
                         <Card>
@@ -191,7 +189,6 @@ const handleEnfoque = (event) =>{
                         </Card>
                     </Grid>
                 </Grid>
-            
             </MKBox>
 
             <MKBox pt={6} px={1} mt={6}>
