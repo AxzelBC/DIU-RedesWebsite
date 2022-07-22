@@ -9,3 +9,12 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model articulos{
+  id_usuario Int @id @default(autoincrement())
+  autores String @db.Text
+  titulo String @db.Text
+  link String @db.Text
+  resumen String @db.Text
+
+}

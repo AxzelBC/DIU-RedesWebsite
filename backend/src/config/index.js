@@ -1,5 +1,6 @@
-const app = require('./app');
+const app = require('./app'); 
 const database = require('./database');
+
 
 //ENCARGADO DE HACER LA CONEXION DEL SERVIDOR Y DE
 const main = () => {
@@ -8,11 +9,11 @@ const main = () => {
       console.log('Base de datos conectada');
     });
   
-    app.listen(3000, () => {
+    app.listen(process.env.PORT || 3000, () => {
       console.log('Servidor escuchando puerto 3000');
     });
   };
   
   main();
-
+ 
 
