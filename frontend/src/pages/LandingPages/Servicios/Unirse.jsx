@@ -18,6 +18,7 @@ import { Grid, Card, Typography, Button, FormControlLabel, FormControl, InputLab
 // Routes
 import routes from "routes/pages.routes";
 import footerRoutes from "routes/footer.routes";
+import axios from "axios";
 
 
 const yupSchema = Yup.object({
@@ -38,7 +39,6 @@ const initialValues  = {
   contraseña: "",
   celular: "312 204 5715",
   porque: "",
-  enable: true
 }
 
 const TextInput = ({ label, ...props }) => {
@@ -58,11 +58,41 @@ const TextInput = ({ label, ...props }) => {
 function Unirse(){
 
   const [enfoque, setEnfoque] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [codigo, setcodEstudiante] = useState('');
+  const [plan, setPlan] = useState('');
+  const [usuario, setUsuario] = useState('');
+  const [email, setEmail] = useState('');
+  const [contraseña, setContraseña] = useState('');
+  const [celular, setCelular] = useState('');
+  const [porque, setPorque] = useState('');
 
-  const onSubmit = async (values, { setSubmitting }) => {
-        
+  const onSubmit = async () => {
+        try {
+          const answer = await axios.post('http://localhost:3000/register', {
+            headers:{
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            },
+            body:{ 
+              nombre: nombre,
+              apellido: apellido,
+              codigo_usuario: codigo,
+              programa: plan,
+              usuario: usuario,
+              correo: email,
+              password: contraseña,
+              celular: celular,
+              porque: porque
+            }
+          });
+          console.log(answer)
+        }
+        catch (error){
+          console.log("register error"+error.message)
+        }
     //await axios.post('/api/users/', { action: 'create', ...values })
-    setSubmitting(false);
 }
 
 const handleEnfoque = (event) =>{
@@ -109,21 +139,20 @@ const handleEnfoque = (event) =>{
 
                             <Box p={2}>
                                 <Formik
-                                initialValues={initialValues}
+                                // initialValues={initialValues}
                                 validationSchema={yupSchema}
                                 >
                                     <Form>
                                         <Box display='flex' flexDirection='column' pb={3}>  
-                                            <TextInput label='Nombre' name='nombre' key='nombre' type='text'/>
-                                            <TextInput label='Apellido' name='apellido' key='apellido' type='text'/>
-                                            <TextInput label='Codigo estudiante' name='codEstudiante' key='conEstudiante' type='text'/>
-                                            <TextInput label='Plan academico' name='plan' key='plan' type='text'/>
-                                            <TextInput label='Usuario' name='usuario' key='usuario' type='text'/>
-                                            <TextInput label='Email' name='email' key='email' type='text'/>
-                                            <TextInput label='Contraseña' name='contraseña' key='contraseña' type='text'/>
-                                            <TextInput label='Celular' name='celular' key='celular' type='text'/>
-                                            <TextInput label='¿Por qué esta interesado en pertenecer al laboratorio?' name='porque' key='porque' type='text' multiline rows={5}/>
-                                            
+                                            <TextInput label='Nombre' name='nombre' key='nombre' type='text' onChange={(event) =>{setNombre(event.target.value)}}/>
+                                            <TextInput label='Apellido' name='apellido' key='apellido' type='text' onChange={(event) =>{setApellido(event.target.value)}}/>
+                                            <TextInput label='Codigo estudiante' name='codEstudiante' key='codEstudiante' type='text' onChange={(event) =>{setcodEstudiante(event.target.value)}}/>
+                                            <TextInput label='Plan academico' name='plan' key='plan' type='text' onChange={(event) =>{setPlan(event.target.value)}}/>
+                                            <TextInput label='Usuario' name='usuario' key='usuario' type='text' onChange={(event) =>{setUsuario(event.target.value)}}/>
+                                            <TextInput label='Email' name='email' key='email' type='text' onChange={(event) =>{setEmail(event.target.value)}}/>
+                                            <TextInput label='Contraseña' name='contraseña' key='contraseña' type='text' onChange={(event) =>{setContraseña(event.target.value)}}/>
+                                            <TextInput label='Celular' name='celular' key='celular' type='text' onChange={(event) =>{setCelular(event.target.value)}}/>
+                                            <TextInput label='¿Por qué esta interesado en pertenecer al laboratorio?' name='porque' key='porque' type='text' onChange={(event) =>{setPorque(event.target.value)}} multiline rows={5}/>
                                             
                                         </Box>
 
@@ -152,7 +181,7 @@ const handleEnfoque = (event) =>{
                                         <TextInput label='En caso de elegir "otro" ¿Cuál seria?' name='cual' key='cual'  type='text'/>
                                         </Box>
                                         <Box textAlign='center'>
-                                            <Button variant="contained" endIcon={<SendIcon />} type='submit' color="error">
+                                            <Button variant="contained" endIcon={<SendIcon />} type='submit' color="error" onClick={onSubmit}>
                                               Enviar Solicitud
                                             </Button>
                                         </Box>
