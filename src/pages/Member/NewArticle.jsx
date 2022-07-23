@@ -21,11 +21,12 @@ const yupSchema = Yup.object({
 
 
 const initialValues  = {
-    title: "Tesis",
-    author: "Jhon Sanabria",
-    abstract: "Es siguiente articulo se basa en la creación del laboratorio",
+    titulo: "Tesis",
+    autores: "Jhon Sanabria",
+    resumen: "Es siguiente articulo se basa en la creación del laboratorio",
     link: "www.eisc.univalle.edu.co",
-    enable: true
+    categoria: "Linux",
+    habilitar: "1",
 }
 
 
@@ -47,10 +48,12 @@ const TextInput = ({ label, ...props }) => {
 function NewArticle() {
 
     const [categorie, setCategorie] = useState('');
+    const [habilitado, setHabilitado] = useState(true);
 
     const onSubmit = async (values, { setSubmitting }) => {
-        
+        console.log('Funciona')
         //await axios.post('/api/users/', { action: 'create', ...values })
+        await axios.post('/admin/newArticle', {categorie,...values })
         setSubmitting(false);
     }
 
@@ -82,17 +85,18 @@ function NewArticle() {
                                 <Formik
                                 initialValues={initialValues}
                                 validationSchema={yupSchema}
+                                onSubmit={onSubmit}
                                 >
                                     <Form>
                                         <Box display='flex' flexDirection='column' pb={3}>  
-                                            <TextInput label='Titulo' name='title' key='titulo' type='text'/>
-                                            <TextInput label='Autores' name='author' key='autores' type='text'/>
-                                            <TextInput label='Resumen' name='abstract' key='resumen' type='text' multiline rows={5}/>
-                                            <TextInput label='Link' name='link' key='enlace' type='text'/>
+                                            <TextInput label='Titulo' name='titulo' key='titulo' type='text'/>
+                                            <TextInput label='Autores' name='autores' key='autores' type='text'/>
+                                            <TextInput label='Resumen' name='resumen' key='resumen' type='text' multiline rows={5}/>
+                                            <TextInput label='Link' name='link' key='link' type='text'/>
                                             
                                         </Box>
 
-                                        <Box m={2} className='row-span-1'>
+                                        <Box m={2} sx={{}} className='row-span-1'>
                                           <FormControl fullWidth>
                                             <InputLabel id="listar-categoria">categoria</InputLabel>
                                             <Select
@@ -111,11 +115,16 @@ function NewArticle() {
                                         </Box>
 
                                         <Box mb={3}>
-                                            <FormControlLabel control={<Switch defaultChecked color="secondary"/>} label="Habilitar" />
+                                            <FormControlLabel 
+                                                control={<Switch
+                                                             defaultChecked color="secondary"
+                                                             onClick={() => (setHabilitado(!true))}
+                                                             />} 
+                                                label="Habilitar"/>
                                         </Box>
                                         <Box textAlign='center'>
                                             <Button variant="contained" endIcon={<SendIcon />} type='submit' color='success'>
-                                              Crear
+                                              Guardar
                                             </Button>
                                         </Box>
                                     </Form>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import  Axios  from 'axios'
+import axios from "utils/axios";
 
 import { Box, Grid, Card, Typography as Typography, Accordion, AccordionSummary, AccordionDetails, Button, Icon } from "@mui/material";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -10,14 +10,109 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import MDButton from 'components/MDButton/index'
 
+function LoadArticles(){
 
+  const navigate = useNavigate();
+
+  const [viewState, setViewState] = useState(true);
+  const [articles, setArticle] = useState([])
+
+  const getArticles = async() =>{
+    const {data} = await axios.get('/traerArticulos');
+    setArticle(data);
+    console.log(data)
+  }
+
+  useEffect( () => (
+    getArticles()
+  ),[]);
+
+  return(
+    <>
+      {
+        articles.map( (article) => (
+          <div key={article.id_articulo}>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+
+              >
+                <Box>
+                  <Typography 
+                    color='error'
+                    fontSize={30} fontWeight={100}
+                  >
+                    <strong>Titulo:</strong>
+                    {` ${article.titulo}`}
+                  </Typography>
+                  <Typography 
+                    fontSize={20} 
+                    fontWeight={100} 
+                    color='black'>
+                    <strong>Categoria:</strong>
+                    {` ${article.categoria}`}
+                  </Typography>
+                </Box>
+              </AccordionSummary>
+              <AccordionDetails>
+              {/* Author */}
+                <Typography variant='h5'>
+                  {article.autores}
+                </Typography>
+              {/* Descripción */}
+                <Typography variant='body2'>
+                {article.resumen}.
+                </Typography>
+              {/* Enlace */}
+              <Box sx={{display: 'flex' , p: 2, justifyContent: 'flex-end'}}>
+                <MDButton
+                  variant="outlined"
+                  sx={{mr: 2}}
+                  color='secondary'
+                  onClick={() => setViewState(!viewState)}
+                  >
+                    <Typography color='secondary' fontSize={12} fontWeight={700}>
+                       {viewState ? 'Activar' : 'Desactivar'} 
+                    </Typography>
+                  </MDButton>
+                  <MDButton 
+                    variant="outlined"
+                    color="dark"
+                    sx={{mr: 2}}
+                    onClick={() => navigate('./edit')}
+                    >
+                    <Icon>
+                        edit
+                      </Icon>&nbsp;editar
+                  </MDButton>
+                  <MDButton variant="outlined" color="primary">
+                    <Icon>delete</Icon>&nbsp;borrar
+                  </MDButton>
+              </Box>
+              </AccordionDetails>
+            </Accordion>
+          </div>
+        ))
+      }
+    </>
+  )
+}
 
 
 function Articles() {
 
-  const navigate = useNavigate();
+  const getArticles = async() =>{
+    const {data} = await axios.get('/traerArticulos');
+    console.log(data)
+  }
 
-  const [articles, setArticle] = useState([]);
+  useEffect( () => (
+    getArticles()
+  ),[]);
+
+  const navigate = useNavigate();
 
   const article = {
     title: 'Sustentación',
@@ -30,9 +125,6 @@ function Articles() {
 
   const [viewState, setViewState] = useState(true);
 
-  const getArticles = async () =>{
-    const { data } = await Axios.post('');
-  }
 
     return(
         <DashboardLayout>
@@ -53,70 +145,7 @@ function Articles() {
                                 <Box>
 
 
-                                    <div>
-                                      <Accordion>
-                                        <AccordionSummary
-                                          expandIcon={<ExpandMoreIcon />}
-                                          aria-controls="panel1a-content"
-                                          id="panel1a-header"
-                                          
-                                        >
-                                          <Box>
-                                            <Typography 
-                                              color='error'
-                                              fontSize={30} fontWeight={100}
-                                            >
-                                              <strong>Titulo:</strong>
-                                              {` ${article.title}`}
-                                            </Typography>
-                                            <Typography 
-                                              fontSize={20} 
-                                              fontWeight={100} 
-                                              color='black'>
-                                              <strong>Categoria:</strong>
-                                              {` ${article.categorie}`}
-                                            </Typography>
-                                          </Box>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                        {/* Author */}
-                                          <Typography variant='h5'>
-                                            Aurelio Rivas - John Sanabria
-                                          </Typography>
-                                        {/* Descripción */}
-                                          <Typography variant='body2'>
-                                            Esta tesis se basa en la inspección de los sistemas distribuidos dentro de un entorno de trabajo controlado.
-                                          </Typography>
-
-                                        {/* Enlace */}
-                                        <Box sx={{display: 'flex' , p: 2, justifyContent: 'flex-end'}}>
-                                          <MDButton
-                                            variant="outlined"
-                                            sx={{mr: 2}}
-                                            color='secondary'
-                                            onClick={() => setViewState(!viewState)}
-                                            >
-                                              <Typography color='secondary' fontSize={12} fontWeight={700}>
-                                                 {viewState ? 'Activar' : 'Desactivar'} 
-                                              </Typography>
-                                            </MDButton>
-                                            <MDButton 
-                                              variant="outlined"
-                                              color="dark"
-                                              sx={{mr: 2}}
-                                              onClick={() => navigate('./edit')}
-                                              >
-                                              <Icon>
-                                                  edit
-                                                </Icon>&nbsp;editar
-                                            </MDButton>
-                                            <MDButton variant="outlined" color="primary">
-                                              <Icon>delete</Icon>&nbsp;borrar
-                                            </MDButton>
-                                        </Box>
-                                        </AccordionDetails>
-                                      </Accordion>
-                                    </div>
+                                <LoadArticles/>
 
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -10,6 +10,7 @@ import { Formik, Form, useField } from "formik";
 import SendIcon from '@mui/icons-material/Send';
 import { Grid, Card, Typography, Button, FormControlLabel, FormControl, InputLabel, Select, MenuItem, Switch } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import axios from "utils/axios";
 
 
 const yupSchema = Yup.object({
@@ -22,11 +23,12 @@ const yupSchema = Yup.object({
 
 
 const initialValues  = {
-    title: "Tesis",
-    author: "Jhon Sanabria",
-    abstract: "Es siguiente articulo se basa en la creación del laboratorio",
+    titulo: "Tesis",
+    autores: "Jhon Sanabria",
+    resumen: "Es siguiente articulo se basa en la creación del laboratorio",
     link: "www.eisc.univalle.edu.co",
-    enable: true
+    categoria: "Linux",
+    habilitar: "1",
 }
 
 
@@ -51,8 +53,17 @@ function EditArticle() {
     const [categorie, setCategorie] = useState('');
     const [cambiado, setCambiado] = useState(false);
 
+    const setArticles = async() =>{
+        const data = await axios.post('/admin/newArticle',initialValues)
+        console.log(data)
+    }
+
+    useEffect( () => (
+        setArticles()
+    ),[])
+
     const onSubmit = async (values, { setSubmitting }) => {
-        //await axios.post('/api/users/', { action: 'create', ...values })
+        await axios.post('/admin/newArticle', {categorie,...values })
         setSubmitting(false);
         setCambiado(true)
 
@@ -91,10 +102,10 @@ function EditArticle() {
                                 >
                                     <Form>
                                         <Box display='flex' flexDirection='column' pb={3}>  
-                                            <TextInput label='Titulo' name='title' key='titulo' type='text'/>
-                                            <TextInput label='Autores' name='author' key='autores' type='text'/>
-                                            <TextInput label='Resumen' name='abstract' key='resumen' type='text' multiline rows={5}/>
-                                            <TextInput label='Link' name='link' key='enlace' type='text'/>
+                                            <TextInput label='Titulo' name='titulo' key='titulo' type='text'/>
+                                            <TextInput label='Autores' name='autores' key='autores' type='text'/>
+                                            <TextInput label='Resumen' name='resumen' key='resumen' type='text' multiline rows={5}/>
+                                            <TextInput label='Link' name='link' key='link' type='text'/>
                                             
                                         </Box>
 
