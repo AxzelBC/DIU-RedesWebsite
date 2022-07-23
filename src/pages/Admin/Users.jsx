@@ -12,7 +12,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 import DataTable from "examples/Tables/DataTable";
-import usersTable from "models/usersTable";
+import usersTable from "components/usersTable";
 
 // Data
 import usersTableData from "pages/Admin/data/usersTableData";
@@ -23,7 +23,7 @@ function Users() {
 
   const listarSolicitudes = async () => {
     try {
-      const answer = await axios.get('http://localhost:3001/usuarios', {
+      const answer = await axios.get('http://localhost:3000/usuarios', {
 
       });
       ({ columns, rows } = usersTable(answer.data));

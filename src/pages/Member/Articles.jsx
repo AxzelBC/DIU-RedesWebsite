@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Modal, TextField } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles"
 
 import axios from "utils/axios";
+import Axios from 'axios'
+
 
 import { Box, Grid, Card, Typography as Typography, Accordion, AccordionSummary, AccordionDetails, Button, Icon } from "@mui/material";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -9,6 +13,25 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import MDButton from 'components/MDButton/index'
+import theme from "assets/theme";
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    position: 'absolute',
+    top: '40%',
+    left: '40%',
+    width: 400,
+    backgroundColor: 'white',
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 3, 3),
+    transform: 'traslate(-50%, -50%)',
+  },
+  textfield: {
+    width: '100%'
+  }
+}))
+
 
 function LoadArticles(){
 
@@ -123,6 +146,14 @@ function Articles() {
 
   const navigate = useNavigate();
 
+  const styles = useStyles();
+
+  const [modal, setModal] = useState(false);
+
+  const abrirCerrarModal = () => {
+    setModal(!modal);
+  }
+
   const article = {
     title: 'Sustentación',
     author: 'Aurelio Rivas - John Sanabria',
@@ -133,9 +164,7 @@ function Articles() {
   }
 
   const [viewState, setViewState] = useState(true);
-
-
-    return(
+return(
         <DashboardLayout>
         <DashboardNavbar />
             <Box>

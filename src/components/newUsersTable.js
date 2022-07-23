@@ -31,8 +31,10 @@ import MDButton from "components/MDButton";
 
 // Images
 import team2 from "assets/images/team-2.jpg";
+import team3 from "assets/images/team-3.jpg";
+import team4 from "assets/images/team-4.jpg";
 
-export default function newUsersTable(data) {
+export default function data(body) {
   const Author = ({ image, name, codigo }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
@@ -54,35 +56,41 @@ export default function newUsersTable(data) {
     </MDBox>
   );
 
+  const datos = body.map((solicitudes) => {
+    return {
+      integrante: <Author image={team2} name="Alexa Liras" codigo="2021436-3743" />,
+      programaOEscuela: <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <Job title="2711" description="Tecnología de sistemas" />
+      </MDTypography>,
+      tema: <Job title="Linux" description="Deseo aprender a instalar y manejar linux en mi pc" />,
+      porque: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          alexa
+        </MDTypography>
+      ),
+      action: (
+        <Stack direction="row" spacing={1}>
+          <MDButton variant="outlined" color="dark">
+            <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
+          </MDButton>
+          <MDButton variant="outlined" color="primary">
+            <ClearIcon>denegar</ClearIcon>&nbsp;denegar
+          </MDButton>
+          <MDButton variant="outlined" color="dark">
+            <AddIcon>mas</AddIcon>&nbsp;ver mas
+          </MDButton>
+        </Stack>
+      )
+    }
+  });
+
   return {
-    columns: [
+    columns1: [
       { Header: "Nombre-código", accessor: "integrante", align: "left" },
       { Header: "Tema de interés y porque desea ingresar", accessor: "tema", align: "left" },
       { Header: "Acción", accessor: "action", align: "center" },
     ],
 
-    rows:
-      data.map((x) => {
-        return {
-          integrante: <Author image={team2} name={x.name} codigo={x.codigo} />,
-          programaOEscuela: <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            <Job title={x.codigoCarrera} description={x.carrera} />
-          </MDTypography>,
-          tema: <Job title={x.tema} description={x.descripcion} />,
-          action: (
-            <Stack direction="row" spacing={-2}>
-              <MDButton variant="text" color="dark">
-                <CheckIcon>aceptar</CheckIcon>&nbsp;aceptar
-              </MDButton>
-              <MDButton variant="text" color="primary">
-                <ClearIcon>denegar</ClearIcon>&nbsp;denegar
-              </MDButton>
-              <MDButton variant="text" color="dark">
-                <AddIcon>mas</AddIcon>&nbsp;ver mas
-              </MDButton>
-            </Stack>
-          ),
-        }
-      })
+    rows1: datos
   };
 }
