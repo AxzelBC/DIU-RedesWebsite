@@ -12,10 +12,9 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 import DataTable from "examples/Tables/DataTable";
-import newUsersTable from "models/newUsersTable";
 
 // Data
-import usersTableData from "pages/Admin/data/newUsersTableData";
+import usersTableData from "components/newUsersTable";
 
 function NewUser() {
   const { columns, rows } = usersTableData();

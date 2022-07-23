@@ -12,7 +12,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 import DataTable from "examples/Tables/DataTable";
-import usersTable from "models/usersTable";
+import usersTable from "components/usersTable";
 
 // Data
 import usersTableData from "pages/Admin/data/usersTableData";
