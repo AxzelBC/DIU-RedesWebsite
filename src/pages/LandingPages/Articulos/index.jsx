@@ -28,7 +28,7 @@ function AccordionArticle() {
 
   useEffect( () => (
     getArticles()
-  ),[articles]);
+  ),[]);
 
   return(
     <div>
