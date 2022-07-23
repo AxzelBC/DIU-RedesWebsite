@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -9,6 +10,7 @@ import Box from "@mui/material/Box";
 import { Formik, Form, useField } from "formik";
 import SendIcon from '@mui/icons-material/Send';
 import { Grid, Card, Typography, Button, FormControlLabel, FormControl, InputLabel, Select, MenuItem, Switch } from "@mui/material";
+import { ViewKanban } from "@mui/icons-material";
 
 
 const yupSchema = Yup.object({
@@ -21,11 +23,12 @@ const yupSchema = Yup.object({
 
 
 const initialValues  = {
-    title: "Tesis",
-    author: "Jhon Sanabria",
-    abstract: "Es siguiente articulo se basa en la creación del laboratorio",
-    link: "www.eisc.univalle.edu.co",
-    enable: true
+    title: "",
+    author: "",
+    abstract: "",
+    link: "",
+    enable: true,
+    category: ""
 }
 
 
@@ -48,10 +51,23 @@ function NewArticle() {
 
     const [categorie, setCategorie] = useState('');
 
-    const onSubmit = async (values, { setSubmitting }) => {
-        
-        //await axios.post('/api/users/', { action: 'create', ...values })
-        setSubmitting(false);
+    const onSubmit = async (values) => {
+        const articulo = {
+            titulo: values.title,
+            autores: values.author,
+            resumen: values.abstract,
+            link: values.link,
+            categoria: values.category,
+        };
+        const response = await axios.post('http://localhost:3000/admin/newArticle', articulo,
+            {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+          );
+
+          alert("Articulo creado!");
+
     }
 
     const handleCategorie = (event) =>{
@@ -82,7 +98,16 @@ function NewArticle() {
                                 <Formik
                                 initialValues={initialValues}
                                 validationSchema={yupSchema}
+                                onSubmit= {values => {
+                                    onSubmit(values);
+                                }}
+
                                 >
+
+                                {({
+                                        setFieldValue
+                                    }) => (
+                                
                                     <Form>
                                         <Box display='flex' flexDirection='column' pb={3}>  
                                             <TextInput label='Titulo' name='title' key='titulo' type='text'/>
@@ -92,15 +117,16 @@ function NewArticle() {
                                             
                                         </Box>
 
-                                        <Box m={2} className='row-span-1'>
+                                        <Box className='row-span-1' pb={3}>
                                           <FormControl fullWidth>
                                             <InputLabel id="listar-categoria">categoria</InputLabel>
                                             <Select
                                               labelId="listar-categoria"
-                                              id="listar-categoria-select"
-                                              value={categorie}
+                                              id={"category"}
                                               label="categoria"
-                                              onChange={handleCategorie}
+                                              name="category"
+                                              value={categorie}
+                                              onChange={e => {handleCategorie(e); setFieldValue("category", e.target.value)}}
                                             >
                                                 <MenuItem key='articulos' value='articulo'>Articulo</MenuItem>
                                                 <MenuItem key='tesis' value='tesis'>Tesis</MenuItem>
@@ -111,14 +137,14 @@ function NewArticle() {
                                         </Box>
 
                                         <Box mb={3}>
-                                            <FormControlLabel control={<Switch defaultChecked color="secondary"/>} label="Habilitar" />
+                                            <FormControlLabel control={<Switch checked={initialValues.enable} color="secondary"/>} label="Habilitar" />
                                         </Box>
                                         <Box textAlign='center'>
                                             <Button variant="contained" endIcon={<SendIcon />} type='submit' color='success'>
                                               Crear
                                             </Button>
                                         </Box>
-                                    </Form>
+                                    </Form>)}
                                 </Formik>
                             </Box>
                         </Card>
