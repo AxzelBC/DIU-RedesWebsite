@@ -22,12 +22,13 @@ function AccordionArticle() {
   const getArticles = async() =>{
     const {data} = await axios.get('/traerArticulos');
     setArticle(data);
+    console.log(data[0].id_articulo)
     console.log(data)
   }
 
   useEffect( () => (
     getArticles()
-  ),[]);
+  ),[articles]);
 
   return(
     <div>
