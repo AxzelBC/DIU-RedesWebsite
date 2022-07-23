@@ -23,7 +23,7 @@ function Users() {
 
   const listarSolicitudes = async () => {
     try {
-      const answer = await axios.get('http://localhost:3001/usuarios', {
+      const answer = await axios.get('http://localhost:3000/usuarios', {
 
       });
       ({ columns, rows } = usersTable(answer.data));
