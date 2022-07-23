@@ -20,12 +20,17 @@ function LoadArticles(){
   const getArticles = async() =>{
     const {data} = await axios.get('/traerArticulos');
     setArticle(data);
-    console.log(data)
   }
+
+  const deleteArticle = async(id) =>{
+    const data = await axios.delete(`/admin/borrarArticle/${id}`)
+    console.log(data);
+    console.log(`Borrado con exito`)
+  } 
 
   useEffect( () => (
     getArticles()
-  ),[]);
+  ),[articles]);
 
   return(
     <>
@@ -67,7 +72,7 @@ function LoadArticles(){
                 </Typography>
               {/* Enlace */}
               <Box sx={{display: 'flex' , p: 2, justifyContent: 'flex-end'}}>
-                <MDButton
+                {/* <MDButton
                   variant="outlined"
                   sx={{mr: 2}}
                   color='secondary'
@@ -76,18 +81,22 @@ function LoadArticles(){
                     <Typography color='secondary' fontSize={12} fontWeight={700}>
                        {viewState ? 'Activar' : 'Desactivar'} 
                     </Typography>
-                  </MDButton>
+                  </MDButton> */}
                   <MDButton 
                     variant="outlined"
                     color="dark"
                     sx={{mr: 2}}
-                    onClick={() => navigate('./edit')}
+                    onClick={() => navigate('./edit', {state: {id: article.id_articulo}})}
                     >
                     <Icon>
                         edit
                       </Icon>&nbsp;editar
                   </MDButton>
-                  <MDButton variant="outlined" color="primary">
+                  <MDButton 
+                    variant="outlined" 
+                    color="primary"
+                    onClick={() => deleteArticle(article.id_articulo)}
+                    >
                     <Icon>delete</Icon>&nbsp;borrar
                   </MDButton>
               </Box>
@@ -104,7 +113,7 @@ function LoadArticles(){
 function Articles() {
 
   const getArticles = async() =>{
-    const {data} = await axios.get('/traerArticulos');
+    const data = await axios.get('/traerArticulos');
     console.log(data)
   }
 
