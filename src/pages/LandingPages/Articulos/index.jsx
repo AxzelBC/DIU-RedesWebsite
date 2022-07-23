@@ -70,6 +70,16 @@ function AccordionArticle() {
 }
 
 function ViewArticle() {
+
+  const getArticles = async() =>{
+    const {data} = await axios.get('/traerArticulos');
+    console.log(data)
+  }
+
+  useEffect( () => (
+    getArticles()
+  ),[]);
+
     return(
         <>
         <MKBox variant="gradient" bgColor="error" shadow="sm" py={0.25}>
