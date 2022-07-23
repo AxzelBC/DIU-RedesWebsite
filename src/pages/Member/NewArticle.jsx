@@ -29,7 +29,6 @@ const initialValues  = {
     link: "",
     enable: true,
     category: ""
-}
 
 
 const TextInput = ({ label, ...props }) => {
@@ -50,6 +49,8 @@ const TextInput = ({ label, ...props }) => {
 function NewArticle() {
 
     const [categorie, setCategorie] = useState('');
+    const [habilitado, setHabilitado] = useState(true);
+
 
     const onSubmit = async (values) => {
         const articulo = {
@@ -67,7 +68,6 @@ function NewArticle() {
           );
 
           alert("Articulo creado!");
-
     }
 
     const handleCategorie = (event) =>{
@@ -101,7 +101,6 @@ function NewArticle() {
                                 onSubmit= {values => {
                                     onSubmit(values);
                                 }}
-
                                 >
 
                                 {({
@@ -110,10 +109,10 @@ function NewArticle() {
                                 
                                     <Form>
                                         <Box display='flex' flexDirection='column' pb={3}>  
-                                            <TextInput label='Titulo' name='title' key='titulo' type='text'/>
-                                            <TextInput label='Autores' name='author' key='autores' type='text'/>
-                                            <TextInput label='Resumen' name='abstract' key='resumen' type='text' multiline rows={5}/>
-                                            <TextInput label='Link' name='link' key='enlace' type='text'/>
+                                            <TextInput label='Titulo' name='titulo' key='titulo' type='text'/>
+                                            <TextInput label='Autores' name='autores' key='autores' type='text'/>
+                                            <TextInput label='Resumen' name='resumen' key='resumen' type='text' multiline rows={5}/>
+                                            <TextInput label='Link' name='link' key='link' type='text'/>
                                             
                                         </Box>
 
@@ -141,7 +140,7 @@ function NewArticle() {
                                         </Box>
                                         <Box textAlign='center'>
                                             <Button variant="contained" endIcon={<SendIcon />} type='submit' color='success'>
-                                              Crear
+                                              Guardar
                                             </Button>
                                         </Box>
                                     </Form>)}

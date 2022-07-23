@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -9,7 +9,8 @@ import Box from "@mui/material/Box";
 import { Formik, Form, useField } from "formik";
 import SendIcon from '@mui/icons-material/Send';
 import { Grid, Card, Typography, Button, FormControlLabel, FormControl, InputLabel, Select, MenuItem, Switch } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import axios from "utils/axios";
 
 
 const yupSchema = Yup.object({
@@ -22,11 +23,12 @@ const yupSchema = Yup.object({
 
 
 const initialValues  = {
-    title: "Tesis",
-    author: "Jhon Sanabria",
-    abstract: "Es siguiente articulo se basa en la creación del laboratorio",
+    titulo: "Tesis",
+    autores: "Jhon Sanabria",
+    resumen: "Es siguiente articulo se basa en la creación del laboratorio",
     link: "www.eisc.univalle.edu.co",
-    enable: true
+    categoria: "Linux",
+    habilitar: "1",
 }
 
 
@@ -47,12 +49,39 @@ const TextInput = ({ label, ...props }) => {
 
 function EditArticle() {
 
-    const navigate = useNavigate();
-    const [categorie, setCategorie] = useState('');
+    const params = useLocation();
+
+    const {id} = params.state
+
+    const [titulo, setTitulo] = useState('')
+    const [autores, setAutores] = useState('')
+    const [resumen, setResumen] = useState('')
+    const [link, setLink] = useState('')
+    const [habilitar, sethabilitar] = useState('1')
+    const [categoria, setCategorie] = useState('');
+
     const [cambiado, setCambiado] = useState(false);
 
+    const setArticles = async() =>{
+        const data = await axios.put(`/admin/editArticle/${id}`,{
+            titulo,
+            autores,
+            resumen,
+            link,
+            categoria,
+            habilitar
+        })
+        console.log(data)
+        console.log(params)
+        console.log(id)
+    }
+
+    // useEffect( () => (
+    //     setArticles()
+    // ),[])
+
     const onSubmit = async (values, { setSubmitting }) => {
-        //await axios.post('/api/users/', { action: 'create', ...values })
+        await axios.post('/admin/newArticle', {categorie: categoria,...values })
         setSubmitting(false);
         setCambiado(true)
 
@@ -85,16 +114,13 @@ function EditArticle() {
 
                             <Box p={2}>
                                 <Formik
-                                initialValues={initialValues}
-                                validationSchema={yupSchema}
-                                onSubmit={onSubmit}
                                 >
                                     <Form>
-                                        <Box display='flex' flexDirection='column' pb={3}>  
-                                            <TextInput label='Titulo' name='title' key='titulo' type='text'/>
-                                            <TextInput label='Autores' name='author' key='autores' type='text'/>
-                                            <TextInput label='Resumen' name='abstract' key='resumen' type='text' multiline rows={5}/>
-                                            <TextInput label='Link' name='link' key='enlace' type='text'/>
+                                        <Box display='flex' flexDirection='column' pb={3} >  
+                                            <TextInput label='Titulo' name='titulo' key='titulo' type='text'onChange={(event) =>{setTitulo(event.target.value)}}/>
+                                            <TextInput label='Autores' name='autores' key='autores' type='text'onChange={(event) =>{setAutores(event.target.value)}}/>
+                                            <TextInput label='Resumen' name='resumen' key='resumen' type='text' multiline rows={5}onChange={(event) =>{setResumen(event.target.value)}}/>
+                                            <TextInput label='Link' name='link' key='link' type='text'onChange={(event) =>{setLink(event.target.value)}}/>
                                             
                                         </Box>
 
@@ -104,7 +130,7 @@ function EditArticle() {
                                             <Select
                                               labelId="listar-categoria"
                                               id="listar-categoria-select"
-                                              value={categorie}
+                                              value={categoria}
                                               label="categoria"
                                               onChange={handleCategorie}
                                             >
@@ -120,7 +146,7 @@ function EditArticle() {
                                             <FormControlLabel control={<Switch defaultChecked color="secondary"/>} label="Habilitar" />
                                         </Box>
                                         <Box textAlign='center'>
-                                            <Button variant="contained" endIcon={<SendIcon />} type='submit' color='success'>
+                                            <Button variant="contained" endIcon={<SendIcon />} color='success' onClick={setArticles}>
                                               Guardar
                                             </Button>
                                         </Box>

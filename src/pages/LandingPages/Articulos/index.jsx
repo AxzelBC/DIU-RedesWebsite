@@ -11,7 +11,76 @@ import SignIn from "layouts/pages/authentication/sign-in";
 import bgImage from "assets/images/bg-about-us.jpg";
 import routes from "routes/pages.routes";
 
+import axios from "utils/axios";
+import { useEffect } from "react";
+import { useState } from "react";
+
+function AccordionArticle() {
+
+  const [articles, setArticle] = useState([])
+
+  const getArticles = async() =>{
+    const {data} = await axios.get('/traerArticulos');
+    setArticle(data);
+    console.log(data[0].id_articulo)
+    console.log(data)
+  }
+
+  useEffect( () => (
+    getArticles()
+  ),[articles]);
+
+  return(
+    <div>
+      {articles.map( (article) => (
+        <div key={article.id_articulo}>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography variant='h4' color='error'>{article.titulo}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+            {/* Author */}
+              <Typography variant='h5'>
+                {article.autores}
+              </Typography>
+            {/* Descripción */}
+              <Typography variant='body2'>
+                {article.resumen}.
+              </Typography>
+            {/* Enlace */}
+            <Box>
+              <Button
+                variant="outlined"
+                href={article.link}
+                target='_blank'>
+                  <Typography color='black' variant='h6'>
+                    Ver más
+                  </Typography>
+                </Button>
+            </Box>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function ViewArticle() {
+
+  const getArticles = async() =>{
+    const {data} = await axios.get('/traerArticulos');
+    console.log(data)
+  }
+
+  useEffect( () => (
+    getArticles()
+  ),[]);
+
     return(
         <>
         <MKBox variant="gradient" bgColor="error" shadow="sm" py={0.25}>
@@ -66,10 +135,10 @@ function ViewArticle() {
                 },
               })}
             >
-              Que nos interesa
+              Producción Intelectual
             </MKTypography>
             <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-              Actividades y proyectos UnixValle
+              Documentos realizados en el laboratorio por nuestros integrantes
             </MKTypography>
             
             
@@ -103,39 +172,7 @@ function ViewArticle() {
                                 <Box>
 
 
-                                    <div>
-                                      <Accordion>
-                                        <AccordionSummary
-                                          expandIcon={<ExpandMoreIcon />}
-                                          aria-controls="panel1a-content"
-                                          id="panel1a-header"
-                                        >
-                                          <Typography variant='h4' color='error'>Tesis de sustentación</Typography>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                        {/* Author */}
-                                          <Typography variant='h5'>
-                                            Aurelio Rivas - John Sanabria
-                                          </Typography>
-                                        {/* Descripción */}
-                                          <Typography variant='body2'>
-                                            Esta tesis se basa en la inspección de los sistemas distribuidos dentro de un entorno de trabajo controlado.
-                                          </Typography>
-
-                                        {/* Enlace */}
-                                        <Box sx={{ p: 2, border: '1px dashed grey',}}>
-                                          <Button
-                                            variant="outlined"
-                                            href="http://eisc.univalle.edu.co/index.php/laboratorios/redes-y-sistemas-distribuidos"
-                                            target='_blank'>
-                                              <Typography color='black' variant='h6'>
-                                                Ver más
-                                              </Typography>
-                                            </Button>
-                                        </Box>
-                                        </AccordionDetails>
-                                      </Accordion>
-                                    </div>
+                                <AccordionArticle/>
 
 
 
