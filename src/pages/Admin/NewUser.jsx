@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios"
 import Box from "@mui/material/Box";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -13,13 +13,24 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 import DataTable from "examples/Tables/DataTable";
-import NewUserTable from "./NewUserTable"
 
 // Data
-import newUsersTableData from "pages/Admin/data/newUsersTableData";
 import newUsersTable from "components/newUsersTable";
 
 function NewUser() {
+  const [columns, setColumns] = useState([]);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    const datos = async () => {
+      const result = await axios.get('http://localhost:3000/solicitudes', {
+      });
+      const { columns1, rows1 } = newUsersTable(result.data);
+      setColumns(columns1);
+      setRows(rows1);
+    }
+    datos()
+  }, [])
 
   return (
     <DashboardLayout>
@@ -33,7 +44,13 @@ function NewUser() {
           <Grid item xs={12}>
             <Card>
               <MDBox pt={3}>
-                <NewUserTable></NewUserTable>
+                <DataTable
+                  table={{ columns, rows }}
+                  isSorted={false}
+                  entriesPerPage={false}
+                  showTotalEntries={false}
+                  noEndBorder
+                />
               </MDBox>
             </Card>
           </Grid>
