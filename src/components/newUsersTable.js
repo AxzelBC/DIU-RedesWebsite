@@ -55,14 +55,14 @@ export default function data(body) {
       <MDTypography variant="caption">{description}</MDTypography>
     </MDBox>
   );
-
+  
   const datos = body.map((solicitudes) => {
     return {
-      integrante: <Author image={team2} name="Alexa Liras" codigo="2021436-3743" />,
+      integrante: <Author image={team2} name={solicitudes.nombre} codigo={solicitudes.codigo} />,
       programaOEscuela: <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-        <Job title="2711" description="Tecnología de sistemas" />
+        <Job title={solicitudes.programa} description="Tecnología de sistemas" />
       </MDTypography>,
-      tema: <Job title="Linux" description="Deseo aprender a instalar y manejar linux en mi pc" />,
+      tema: <Job title={solicitudes.enfoque} description={solicitudes.descripcion} />,
       porque: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           alexa

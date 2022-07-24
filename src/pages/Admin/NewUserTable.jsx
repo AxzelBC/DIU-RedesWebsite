@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import axios from "axios"
 import DataTable from "examples/Tables/DataTable";
 
@@ -6,34 +6,36 @@ import newUsersTableData from "pages/Admin/data/newUsersTableData";
 import newUsersTable from "components/newUsersTable";
 
 const NewUserTable = () => {
-  let columns, rows;
-  ({columns, rows} = newUsersTableData());
+  const tableData = newUsersTableData();
+  const [columns, setColumns] = useState([]);
+  const [rows, setRows] = useState([]);
+  
 
-  const datos = async () => {
-    try {
-      const { data } = await axios.get('http://localhost:3000/solicitudes', {
+  useEffect(() => {
+    const datos = async () => {
+      const result = await axios.get('http://localhost:3000/solicitudes', {
       });
-      const { columns1, rows1 } = newUsersTable(data);
-      //console.log(data)
-      //console.log(columns1);
-      //console.log("axios " + rows1);
-      columns = columns1;
-      rows = rows1;
+      const { columns1, rows1 } = newUsersTable(result.data);
+      setColumns(columns1);
+      setRows(rows1);
     }
-    catch (error) {
-      console.log(error.message)
-    }
+    datos()
+  }, [])
+
+  const Tabla = ({columns, rows}) => {
+    return (
+      <DataTable
+        table={{ columns, rows }}
+        isSorted={false}
+        entriesPerPage={false}
+        showTotalEntries={false}
+        noEndBorder
+      />
+    )
   }
-  datos();
 
   return (
-    <DataTable
-      table={{ columns, rows }}
-      isSorted={false}
-      entriesPerPage={false}
-      showTotalEntries={false}
-      noEndBorder
-    />
+    <Tabla columns={columns} rows={rows}/>
   )
 }
 
