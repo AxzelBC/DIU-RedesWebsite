@@ -63,7 +63,7 @@ function EditArticle() {
     const [cambiado, setCambiado] = useState(false);
 
     const setArticles = async() =>{
-        const data = await axios.put(`/admin/editArticle/${id}`,{
+        const data = await axios.post(`/api/editArticle/${id}`,{
             titulo,
             autores,
             resumen,
