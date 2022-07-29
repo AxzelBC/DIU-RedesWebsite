@@ -20,7 +20,7 @@ function AccordionArticle() {
   const [articles, setArticle] = useState([])
 
   const getArticles = async() =>{
-    const {data} = await axios.get('/traerArticulos');
+    const {data} = await axios.get('/api/articulos/');
     setArticle(data);
     console.log(data[0].id_articulo)
     console.log(data)
