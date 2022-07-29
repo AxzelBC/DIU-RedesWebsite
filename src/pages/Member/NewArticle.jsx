@@ -59,7 +59,7 @@ function NewArticle() {
             link: values.link,
             categoria: values.category,
         };
-        const response = await axios.post('/admin/newArticle', articulo,
+        const response = await axios.post('/api/articulos', articulo,
             {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'

@@ -81,7 +81,7 @@ function EditArticle() {
     // ),[])
 
     const onSubmit = async (values, { setSubmitting }) => {
-        await axios.post('/admin/newArticle', {categorie: categoria,...values })
+        await axios.post(`/api/articulos/${id}`, {categorie: categoria,...values })
         setSubmitting(false);
         setCambiado(true)
 

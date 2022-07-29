@@ -73,7 +73,7 @@ function AccordionArticle() {
 function ViewArticle() {
 
   const getArticles = async() =>{
-    const {data} = await axios.get('/traerArticulos');
+    const {data} = await axios.get('/api/articulos');
     console.log(data)
   }
 

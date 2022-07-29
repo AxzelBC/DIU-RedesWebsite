@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'https://lascilab-backend.herokuapp.com/',
+    baseURL: 'http://localhost:3000/',
     withCredentials: false,
     headers:{
         'Content-Type': 'application/json',

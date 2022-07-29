@@ -41,12 +41,12 @@ function LoadArticles(){
   const [articles, setArticle] = useState([])
 
   const getArticles = async() =>{
-    const {data} = await axios.get('/traerArticulos');
+    const {data} = await axios.get('/api/articulos');
     setArticle(data);
   }
 
   const deleteArticle = async(id) =>{
-    const data = await axios.delete(`/admin/borrarArticle/${id}`)
+    const data = await axios.delete(`/api/articulos/${id}`)
     console.log(data);
     console.log(`Borrado con exito`)
   } 
@@ -136,7 +136,7 @@ function LoadArticles(){
 function Articles() {
 
   const getArticles = async() =>{
-    const data = await axios.get('/traerArticulos');
+    const data = await axios.get('/api/articulos');
     console.log(data)
   }
 
