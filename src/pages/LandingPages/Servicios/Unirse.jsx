@@ -26,7 +26,7 @@ import { auth } from 'utils/firebase';
 import { useNavigate } from "react-router-dom";
 
 
-const initialValues  = {
+const initialValues = {
   nombre: "Alejandro",
   apellido: "Mosquera",
   codEstudiante: "2022499",
@@ -43,17 +43,17 @@ const TextInput = ({ label, ...props }) => {
 
   const [field, meta] = useField(props);
 
-  return(
-      <>
-          <Box mb={0.5} ml={0.5} color='rgb(52, 71, 103)'>
-              <Typography variant="h6" display='inline-block' fontWeight={700}>{label}</Typography>
-          </Box>
-          <MKInput className="text-input" {...field} {...props}/>
-      </>
+  return (
+    <>
+      <Box mb={0.5} ml={0.5} color='rgb(52, 71, 103)'>
+        <Typography variant="h6" display='inline-block' fontWeight={700}>{label}</Typography>
+      </Box>
+      <MKInput className="text-input" {...field} {...props} />
+    </>
   )
 }
 
-function Unirse(){
+function Unirse() {
   const navigate = useNavigate();
   const [msgError, setMsgError] = useState(null);
 
@@ -83,153 +83,153 @@ function Unirse(){
   // console.log(porque)
   // console.log(cual)
   const onSubmit = async () => {
-        // try {
-        //   const answer = await axios.post('http://localhost:3000/register', {
-        //     headers:{
-        //       'Content-Type': 'application/json',
-        //       'Access-Control-Allow-Origin': '*'
-        //     },
-        //     body:{ 
-        //       nombre: nombre,
-        //       apellido: apellido,
-        //       codigo_usuario: codigo,
-        //       programa: plan,
-        //       usuario: usuario,
-        //       correo: email,
-        //       password: contraseña,
-        //       celular: celular,
-        //       porque: porque
-        //     }
-        //   });
-        //   console.log(answer)
-        // }
-        // catch (error){
-        //   console.log("register error"+error.message)
-        // }
+    // try {
+    //   const answer = await axios.post('http://localhost:3000/register', {
+    //     headers:{
+    //       'Content-Type': 'application/json',
+    //       'Access-Control-Allow-Origin': '*'
+    //     },
+    //     body:{ 
+    //       nombre: nombre,
+    //       apellido: apellido,
+    //       codigo_usuario: codigo,
+    //       programa: plan,
+    //       usuario: usuario,
+    //       correo: email,
+    //       password: contraseña,
+    //       celular: celular,
+    //       porque: porque
+    //     }
+    //   });
+    //   console.log(answer)
+    // }
+    // catch (error){
+    //   console.log("register error"+error.message)
+    // }
     //await axios.post('/api/users/', { action: 'create', ...values })
   }
 
-  const registrarUsuario = (e) =>{
+  const registrarUsuario = (e) => {
     e.preventDefault();
     console.log('funciona')
-    createUserWithEmailAndPassword(auth,email,contraseña)
-        .then( r => {
-            alert('¡Usuario Creado!')
-        })
-        //Firebase: Error (auth/invalid-email).
-        //Firebase: Password should be at least 6 characters (auth/weak-password).
-        .catch( e => {
-            if (e.code === 'auth/invalid-email') {
-                setMsgError('Formato de Email incorrecto');
-                alert(msgError);
-            }
-            if (e.code === 'auth/weak-password') {
-                setMsgError('Contraseña muy corta. Minimo 6 caracteres');
-                alert(msgError);
-            }
-        })
+    createUserWithEmailAndPassword(auth, email, contraseña)
+      .then(r => {
+        alert('¡Usuario Creado!')
+      })
+      //Firebase: Error (auth/invalid-email).
+      //Firebase: Password should be at least 6 characters (auth/weak-password).
+      .catch(e => {
+        if (e.code === 'auth/invalid-email') {
+          setMsgError('Formato de Email incorrecto');
+          alert(msgError);
+        }
+        if (e.code === 'auth/weak-password') {
+          setMsgError('Contraseña muy corta. Minimo 6 caracteres');
+          alert(msgError);
+        }
+      })
   }
 
-const handleEnfoque = (event) =>{
+  const handleEnfoque = (event) => {
     setEnfoque(event.target.value);
-}
+  }
 
-    return(
-        <>
-            <MKBox variant="gradient" bgColor="error" shadow="sm" py={0.25}>
-              <DefaultNavbar
-                routes={routes}
-                action={{
-                  type: "internal",
-                  route: "/login",
-                  component: <SignIn/>,
-                  label: "Integrantes",
-                  color: "default",
-                }}
-                sticky
-                transparent
-                relative
-                light
-                center
-              />
-            </MKBox>
+  return (
+    <>
+      <MKBox variant="gradient" bgColor="error" shadow="sm" py={0.25}>
+        <DefaultNavbar
+          routes={routes}
+          action={{
+            type: "internal",
+            route: "/login",
+            component: <SignIn />,
+            label: "Integrantes",
+            color: "default",
+          }}
+          sticky
+          transparent
+          relative
+          light
+          center
+        />
+      </MKBox>
 
-            <MKBox>
-                <Grid container justifyContent='center'>
-                    <Grid item md={12} lg={10} pt={10}>
-                        <Card>
+      <MKBox>
+        <Grid container justifyContent='center'>
+          <Grid item md={12} lg={10} pt={10}>
+            <Card>
 
-                            <Box xs={12} p={2} textAlign='center'>
-                                <Box display='flex' flexDirection='column' pb={3}>
-                                    <Typography variant="h3" fontWeight={700}>
-                                        Formulario para solicitar registro
-                                    </Typography>
-                                    <Typography variant='caption' className='css-17vat79'>
-                                        Ingrese la informacion solicitada para poder enviar su solicitud
-                                    </Typography>
-                                </Box>
-                            </Box>
+              <Box xs={12} p={2} textAlign='center'>
+                <Box display='flex' flexDirection='column' pb={3}>
+                  <Typography variant="h3" fontWeight={700}>
+                    Formulario para solicitar registro
+                  </Typography>
+                  <Typography variant='caption' className='css-17vat79'>
+                    Ingrese la informacion solicitada para poder enviar su solicitud
+                  </Typography>
+                </Box>
+              </Box>
 
 
-                            <Box p={2}>
-                                <Formik
-                                >
-                                    <Form>
-                                        <Box display='flex' flexDirection='column' pb={3}>  
-                                            <TextInput label='Nombre' name='nombre' key='nombre' type='text' onChange={(event) =>{setNombre(event.target.value)}}/>
-                                            <TextInput label='Apellido' name='apellido' key='apellido' type='text' onChange={(event) =>{setApellido(event.target.value)}}/>
-                                            <TextInput label='Codigo estudiante' name='codEstudiante' key='codEstudiante' type='text' onChange={(event) =>{setcodEstudiante(event.target.value)}}/>
-                                            <TextInput label='Plan academico' name='plan' key='plan' type='text' onChange={(event) =>{setPlan(event.target.value)}}/>
-                                            <TextInput label='Usuario' name='usuario' key='usuario' type='text' onChange={(event) =>{setUsuario(event.target.value)}}/>
-                                            <TextInput label='Email' name='email' key='email' type='text' onChange={(event) =>{setEmail(event.target.value)}}/>
-                                            <TextInput label='Contraseña' name='contraseña' key='contraseña' type='text' onChange={(event) =>{setContraseña(event.target.value)}}/>
-                                            <TextInput label='Celular' name='celular' key='celular' type='text' onChange={(event) =>{setCelular(event.target.value)}}/>
-                                            <TextInput label='¿Por qué esta interesado en pertenecer al laboratorio?' name='porque' key='porque' type='text' onChange={(event) =>{setPorque(event.target.value)}} multiline rows={5}/>
-                                            <TextInput label='En caso de elegir "otro" ¿Cuál seria?' name='cual' key='cual' type='text' onChange={(event) =>{setCual(event.target.value)}}/>
-                                        </Box>
+              <Box p={2}>
+                <Formik
+                >
+                  <Form>
+                    <Box display='flex' flexDirection='column' pb={3}>
+                      <TextInput label='Nombre' name='nombre' key='nombre' type='text' onChange={(event) => { setNombre(event.target.value) }} />
+                      <TextInput label='Apellido' name='apellido' key='apellido' type='text' onChange={(event) => { setApellido(event.target.value) }} />
+                      <TextInput label='Codigo estudiante' name='codEstudiante' key='codEstudiante' type='text' onChange={(event) => { setcodEstudiante(event.target.value) }} />
+                      <TextInput label='Plan academico' name='plan' key='plan' type='text' onChange={(event) => { setPlan(event.target.value) }} />
+                      <TextInput label='Usuario' name='usuario' key='usuario' type='text' onChange={(event) => { setUsuario(event.target.value) }} />
+                      <TextInput label='Email' name='email' key='email' type='text' onChange={(event) => { setEmail(event.target.value) }} />
+                      <TextInput label='Contraseña' name='contraseña' key='contraseña' type='text' onChange={(event) => { setContraseña(event.target.value) }} />
+                      <TextInput label='Celular' name='celular' key='celular' type='text' onChange={(event) => { setCelular(event.target.value) }} />
+                      <TextInput label='¿Por qué esta interesado en pertenecer al laboratorio?' name='porque' key='porque' type='text' onChange={(event) => { setPorque(event.target.value) }} multiline rows={5} />
+                      <TextInput label='En caso de elegir "otro" ¿Cuál seria?' name='cual' key='cual' type='text' onChange={(event) => { setCual(event.target.value) }} />
+                    </Box>
 
-                                        <Box m={1} className='row-span-1'>
-                                          <FormControl fullWidth>
-                                            <Typography variant="h6" fontWeight={700}>
-                                              ¿En que le gustaria enfocarse?
-                                            </Typography>
-                                            <InputLabel id="listar-enfoque"></InputLabel>
-                                            <Select
-                                              labelId="listar-enfoque"
-                                              id="listar-enfoque-select"
-                                              value={enfoque}
-                                              label="enfoque"
-                                              onChange={handleEnfoque}
-                                            >
-                                                <MenuItem key='Redes' value='redes'>Redes</MenuItem>
-                                                <MenuItem key='SistDistribuidos' value='SistDistribuidos'>Sistemas distribuidos</MenuItem>
-                                                <MenuItem key='Linux' value='linux'>Linux</MenuItem>
-                                                <MenuItem key='Otro' value='otro'>Otros</MenuItem>
-                                            </Select>
-                                          </FormControl>
-                                        </Box>
+                    <Box m={1} className='row-span-1'>
+                      <FormControl fullWidth>
+                        <Typography variant="h6" fontWeight={700}>
+                          ¿En que le gustaria enfocarse?
+                        </Typography>
+                        <InputLabel id="listar-enfoque"></InputLabel>
+                        <Select
+                          labelId="listar-enfoque"
+                          id="listar-enfoque-select"
+                          value={enfoque}
+                          label="enfoque"
+                          onChange={handleEnfoque}
+                        >
+                          <MenuItem key='Redes' value='redes'>Redes</MenuItem>
+                          <MenuItem key='SistDistribuidos' value='SistDistribuidos'>Sistemas distribuidos</MenuItem>
+                          <MenuItem key='Linux' value='linux'>Linux</MenuItem>
+                          <MenuItem key='Otro' value='otro'>Otros</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
 
-                                        {/* <Box mb={0}>
+                    {/* <Box mb={0}>
                                          
                                         </Box> */}
-                                        <Box textAlign='center'>
-                                            <Button variant="contained" endIcon={<SendIcon />} color="error" onClick={registrarUsuario}>
-                                              Enviar Solicitud
-                                            </Button>
-                                        </Box>
-                                    </Form>
-                                </Formik>
-                            </Box>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </MKBox>
+                    <Box textAlign='center'>
+                      <Button variant="contained" endIcon={<SendIcon />} color="error" onClick={registrarUsuario}>
+                        Enviar Solicitud
+                      </Button>
+                    </Box>
+                  </Form>
+                </Formik>
+              </Box>
+            </Card>
+          </Grid>
+        </Grid>
+      </MKBox>
 
-            <MKBox pt={6} px={1} mt={6}>
-              <DefaultFooter content={footerRoutes} />
-            </MKBox>
-        </>
-    )
+      <MKBox pt={6} px={1} mt={6}>
+        <DefaultFooter content={footerRoutes} />
+      </MKBox>
+    </>
+  )
 }
 
 export default Unirse;
