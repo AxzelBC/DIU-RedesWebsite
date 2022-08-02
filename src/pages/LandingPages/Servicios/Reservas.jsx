@@ -105,7 +105,7 @@ function Reservas() {
                 >
                   <Form>
                     <Box display='flex' flexDirection='column' pb={2}>
-                      <TextInput label='NombreCompleto' name='nombreCompleto' key='nombreCompleto' type='text' onChange={(event) => { setNombreCompleto(event.target.value) }} />
+                      <TextInput label='Nombre completo' name='nombreCompleto' key='nombreCompleto' type='text' onChange={(event) => { setNombreCompleto(event.target.value) }} />
                       <TextInput label='Email' name='email' key='email' type='text' onChange={(event) => { setEmail(event.target.value) }} />
                     </Box>
 

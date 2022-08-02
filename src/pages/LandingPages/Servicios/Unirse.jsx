@@ -175,7 +175,7 @@ function Unirse() {
                 <Formik
                 >
                   <Form>
-                    <Box display='flex' flexDirection='column' pb={3}>
+                    <Box display='flex' flexDirection='column' pb={2}>
                       <TextInput label='Nombre' name='nombre' key='nombre' type='text' onChange={(event) => { setNombre(event.target.value) }} />
                       <TextInput label='Apellido' name='apellido' key='apellido' type='text' onChange={(event) => { setApellido(event.target.value) }} />
                       <TextInput label='Codigo estudiante' name='codEstudiante' key='codEstudiante' type='text' onChange={(event) => { setcodEstudiante(event.target.value) }} />
@@ -185,16 +185,16 @@ function Unirse() {
                       <TextInput label='Contraseña' name='contraseña' key='contraseña' type='text' onChange={(event) => { setContraseña(event.target.value) }} />
                       <TextInput label='Celular' name='celular' key='celular' type='text' onChange={(event) => { setCelular(event.target.value) }} />
                       <TextInput label='¿Por qué esta interesado en pertenecer al laboratorio?' name='porque' key='porque' type='text' onChange={(event) => { setPorque(event.target.value) }} multiline rows={5} />
-                      <TextInput label='En caso de elegir "otro" ¿Cuál seria?' name='cual' key='cual' type='text' onChange={(event) => { setCual(event.target.value) }} />
+                      
                     </Box>
 
-                    <Box m={1} className='row-span-1'>
+                    <Box m={0} className='row-span-1'>
                       <FormControl fullWidth>
                         <Typography variant="h6" fontWeight={700}>
                           ¿En que le gustaria enfocarse?
                         </Typography>
                         <InputLabel id="listar-enfoque"></InputLabel>
-                        <Select
+                        <Select 
                           labelId="listar-enfoque"
                           id="listar-enfoque-select"
                           value={enfoque}
@@ -207,6 +207,9 @@ function Unirse() {
                           <MenuItem key='Otro' value='otro'>Otros</MenuItem>
                         </Select>
                       </FormControl>
+                      <Box display='flex' flexDirection='column' pb={3}>
+                      <TextInput label='En caso de elegir "otro" ¿Cuál seria?' name='cual' key='cual' type='text' onChange={(event) => { setCual(event.target.value) }} />
+                      </Box>
                     </Box>
 
                     {/* <Box mb={0}>
